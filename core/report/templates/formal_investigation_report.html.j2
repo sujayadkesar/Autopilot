@@ -1,0 +1,629 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formal Forensic Investigation Report — {{ customer_name }}</title>
+<style>
+  :root {
+    --ink:        #1a1a1a;
+    --ink-soft:   #444;
+    --line:       #d0d0d0;
+    --line-soft:  #e8e8e8;
+    --paper:      #fdfdfd;
+    --accent:     #1f4e79;
+    --highlight:  #fff3cd;
+    --crit:       #c0392b;
+    --high:       #d35400;
+    --med:        #b7950b;
+    --low:        #1f8b4c;
+    --info:       #2874a6;
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: Georgia, "Times New Roman", Times, serif;
+    color: var(--ink);
+    background: var(--paper);
+    line-height: 1.6;
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 56px 64px;
+    font-size: 12pt;
+  }
+  /* Cover page */
+  .cover {
+    text-align: center;
+    border-bottom: 3px double var(--ink);
+    padding-bottom: 48px;
+    margin-bottom: 48px;
+  }
+  .cover .stamp {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 9pt;
+    letter-spacing: 4px;
+    color: var(--crit);
+    border: 1px solid var(--crit);
+    padding: 4px 12px;
+    display: inline-block;
+    margin-bottom: 24px;
+    text-transform: uppercase;
+    font-weight: 700;
+  }
+  .cover h1 {
+    font-size: 28pt;
+    margin: 0 0 8px;
+    font-weight: normal;
+    line-height: 1.2;
+  }
+  .cover .subtitle {
+    font-style: italic;
+    color: var(--ink-soft);
+    font-size: 13pt;
+    margin-bottom: 32px;
+  }
+  .cover-table {
+    margin: 32px auto;
+    border-collapse: collapse;
+    text-align: left;
+    font-size: 11pt;
+  }
+  .cover-table td {
+    padding: 6px 16px;
+    border-bottom: 1px solid var(--line-soft);
+  }
+  .cover-table td:first-child {
+    font-weight: 700;
+    color: var(--ink-soft);
+    text-transform: uppercase;
+    font-size: 9pt;
+    letter-spacing: 1px;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+  /* Section headers */
+  h2 {
+    font-size: 18pt;
+    border-bottom: 2px solid var(--accent);
+    padding-bottom: 6px;
+    margin: 56px 0 16px;
+    color: var(--accent);
+  }
+  h3 {
+    font-size: 14pt;
+    color: var(--ink);
+    margin: 32px 0 12px;
+    border-left: 4px solid var(--accent);
+    padding-left: 12px;
+  }
+  h4 {
+    font-size: 12pt;
+    color: var(--accent);
+    margin: 20px 0 8px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-family: Helvetica, Arial, sans-serif;
+  }
+  p { margin: 0 0 12px; }
+  /* Brief / verdict box */
+  .brief-box {
+    background: #f9f6f0;
+    border-left: 4px solid var(--accent);
+    padding: 16px 20px;
+    margin: 16px 0 32px;
+    font-size: 11pt;
+  }
+  .brief-box .label {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 9pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--accent);
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .verdict {
+    background: #fff;
+    border: 2px solid var(--ink);
+    padding: 24px;
+    margin: 24px 0;
+  }
+  .verdict.crit { border-color: var(--crit); background: #fef2f0; }
+  .verdict.high { border-color: var(--high); background: #fef5ed; }
+  .verdict.med  { border-color: var(--med);  background: #fefae8; }
+  .verdict.low  { border-color: var(--low);  background: #eff8f1; }
+  .verdict h3 {
+    margin-top: 0;
+    border: none;
+    padding: 0;
+    color: var(--ink);
+    font-size: 16pt;
+  }
+  .verdict .label {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 9pt;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    font-weight: 700;
+  }
+  /* Finding block */
+  .finding {
+    page-break-inside: avoid;
+    border: 1px solid var(--line);
+    border-left: 6px solid var(--ink);
+    background: #fff;
+    margin: 24px 0;
+    padding: 0;
+  }
+  .finding.sev-CRITICAL { border-left-color: var(--crit); }
+  .finding.sev-HIGH     { border-left-color: var(--high); }
+  .finding.sev-MEDIUM   { border-left-color: var(--med); }
+  .finding.sev-LOW      { border-left-color: var(--low); }
+  .finding.sev-INFO     { border-left-color: var(--info); }
+  .finding-header {
+    padding: 14px 20px;
+    background: #fafafa;
+    border-bottom: 1px solid var(--line-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 12px;
+  }
+  .finding-header .num {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 9pt;
+    color: var(--ink-soft);
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .finding-header .title {
+    font-size: 13pt;
+    font-weight: 700;
+    flex: 1;
+  }
+  .finding-header .sev-pill {
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 9pt;
+    font-weight: 700;
+    padding: 3px 10px;
+    border: 1px solid;
+    color: white;
+    letter-spacing: 1px;
+  }
+  .sev-pill.sev-CRITICAL { background: var(--crit); border-color: var(--crit); }
+  .sev-pill.sev-HIGH     { background: var(--high); border-color: var(--high); }
+  .sev-pill.sev-MEDIUM   { background: var(--med);  border-color: var(--med); }
+  .sev-pill.sev-LOW      { background: var(--low);  border-color: var(--low); }
+  .sev-pill.sev-INFO     { background: var(--info); border-color: var(--info); }
+  .finding-body { padding: 20px; }
+  .finding-summary {
+    font-style: italic;
+    color: var(--ink-soft);
+    margin-bottom: 16px;
+    font-size: 11pt;
+  }
+  /* Evidence card */
+  .evidence-card {
+    margin-top: 16px;
+    background: #f5f5f0;
+    border: 1px solid var(--line);
+    page-break-inside: avoid;
+  }
+  .evidence-card .card-header {
+    background: var(--ink);
+    color: white;
+    padding: 8px 14px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 9pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+  }
+  .evidence-card .card-header .source { color: #ccc; font-style: italic; }
+  .evidence-card .card-body {
+    padding: 0;
+    overflow-x: auto;
+  }
+  .evidence-card table {
+    width: 100%;
+    border-collapse: collapse;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 9pt;
+  }
+  .evidence-card th {
+    background: #e8e4d8;
+    text-align: left;
+    padding: 6px 8px;
+    border-bottom: 2px solid var(--line);
+    color: var(--ink);
+    font-weight: 700;
+    font-size: 9pt;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+  .evidence-card td {
+    padding: 5px 8px;
+    border-bottom: 1px solid var(--line-soft);
+    color: var(--ink-soft);
+    word-break: break-all;
+  }
+  .evidence-card td.highlight {
+    background: var(--highlight);
+    color: var(--ink);
+    font-weight: 700;
+  }
+  .evidence-card tr:hover td { background: #f9f9f5; }
+  /* Exhibit figure (rasterized tool screenshot) */
+  .exhibit-figure {
+    margin: 16px 0;
+    page-break-inside: avoid;
+    text-align: center;
+  }
+  .exhibit-figure img {
+    max-width: 100%;
+    border: 1px solid var(--line);
+    box-shadow: 0 2px 8px rgba(0,0,0,.12);
+  }
+  .exhibit-figure figcaption {
+    font-size: 9.5pt;
+    color: var(--ink-soft);
+    font-style: italic;
+    margin-top: 6px;
+  }
+  .mono { font-family: Consolas, "Courier New", monospace; font-size: 9pt; }
+  /* ATT&CK tags */
+  .attack-tags { margin: 12px 0; display: flex; flex-wrap: wrap; gap: 6px; align-items: center; }
+  .attack-tags .attack-label {
+    font-family: Helvetica, Arial, sans-serif; font-size: 8pt; letter-spacing: 1px;
+    text-transform: uppercase; color: var(--ink-soft); font-weight: 700;
+  }
+  .attack-pill {
+    font-family: Consolas, monospace; font-size: 9pt; background: #eef2f7;
+    border: 1px solid #c3d0df; color: #1f4e79; padding: 2px 8px; border-radius: 3px;
+  }
+  /* IOC list */
+  .ioc-list {
+    background: #1c1c1c;
+    color: #e6e6e6;
+    padding: 14px 18px;
+    font-family: Consolas, "Courier New", monospace;
+    font-size: 9pt;
+    margin: 12px 0;
+    overflow-x: auto;
+  }
+  .ioc-list .label {
+    color: #f0883e;
+    font-weight: 700;
+    margin-bottom: 6px;
+    font-family: Helvetica, Arial, sans-serif;
+    font-size: 9pt;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+  .ioc-list ul { list-style: none; padding: 0; margin: 0; }
+  .ioc-list li { padding: 2px 0; }
+  /* Conclusion / footer */
+  .conclusion {
+    border-top: 3px double var(--ink);
+    margin-top: 56px;
+    padding-top: 24px;
+  }
+  footer {
+    text-align: center;
+    color: var(--ink-soft);
+    font-size: 10pt;
+    margin-top: 40px;
+    border-top: 1px solid var(--line-soft);
+    padding-top: 16px;
+  }
+  /* No findings notice */
+  .no-findings {
+    text-align: center;
+    padding: 32px;
+    background: #f5f5f5;
+    border: 1px dashed var(--line);
+    color: var(--ink-soft);
+    font-style: italic;
+  }
+  /* Print */
+  @media print {
+    body { padding: 24px; }
+    h2 { page-break-before: always; }
+    h2:first-of-type { page-break-before: auto; }
+    .finding { page-break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Cover Page -->
+<section class="cover">
+  <div class="stamp">Confidential — Investigative Material</div>
+  <h1>{{ report_title }}</h1>
+  <p class="subtitle">Formal Forensic Investigation Report</p>
+  <table class="cover-table">
+    <tr><td>Customer</td><td>{{ customer_name }}</td></tr>
+    <tr><td>Case Reference</td><td>{{ case_reference }}</td></tr>
+    <tr><td>Investigation Date</td><td>{{ investigation_date }}</td></tr>
+    <tr><td>Examined Host</td><td>{{ system_info.ComputerName or "N/A" }}</td></tr>
+    <tr><td>Operating System</td><td>{{ (system_info.os_info.ProductName if system_info.os_info else None) or "Windows" }}</td></tr>
+    <tr><td>Report Generated</td><td>{{ generated_at }}</td></tr>
+    <tr><td>Methodology</td><td>Deterministic, automation-first (no AI inference)</td></tr>
+  </table>
+</section>
+
+<!-- 1. Investigative Brief -->
+<h2>1. Investigative Brief</h2>
+<div class="brief-box">
+  <div class="label">Reported case background</div>
+  {% if investigation_prompt %}
+  <p>{{ investigation_prompt }}</p>
+  {% else %}
+  <p><em>No specific investigation brief was supplied; this report applies the default forensic baseline (persistence, hacktools, log integrity).</em></p>
+  {% endif %}
+</div>
+
+<h4>Focus Areas Determined From Brief</h4>
+{% if focus_areas %}
+<ul>
+  {% for area in focus_areas %}
+  <li><strong>{{ area.replace("_", " ").title() }}</strong> — {{ focus_descriptions.get(area, "") }}</li>
+  {% endfor %}
+</ul>
+{% else %}
+<p><em>Default focus baseline applied.</em></p>
+{% endif %}
+
+<!-- 2. Verdict -->
+<h2>2. Findings Summary</h2>
+{% set crit = counts.CRITICAL or 0 %}
+{% set high = counts.HIGH or 0 %}
+{% set med  = counts.MEDIUM or 0 %}
+{% if crit > 0 %}
+<div class="verdict crit">
+  <div class="label">Verdict</div>
+  <h3>Strong indicators of compromise / policy violation identified</h3>
+  <p>{{ crit }} critical and {{ high }} high-severity finding(s) require immediate review.
+     The evidence below cites the specific artifacts from which each finding was derived.</p>
+</div>
+{% elif high > 0 %}
+<div class="verdict high">
+  <div class="label">Verdict</div>
+  <h3>Significant indicators identified — investigative action recommended</h3>
+  <p>{{ high }} high-severity and {{ med }} medium-severity finding(s) warrant follow-up.</p>
+</div>
+{% elif med > 0 %}
+<div class="verdict med">
+  <div class="label">Verdict</div>
+  <h3>Moderate indicators identified</h3>
+  <p>{{ med }} medium-severity item(s) merit review in the context of the case background.</p>
+</div>
+{% else %}
+<div class="verdict low">
+  <div class="label">Verdict</div>
+  <h3>No high-severity indicators detected</h3>
+  <p>Within the scope of the focus areas, automation did not surface evidence of the
+     activities described in the brief. This does not by itself prove the negative.</p>
+</div>
+{% endif %}
+
+<table style="width:100%; border-collapse: collapse; margin: 16px 0;">
+  <tr style="background: #fafafa;">
+    <th style="padding: 8px; text-align: left; border-bottom: 2px solid var(--ink);">Severity</th>
+    <th style="padding: 8px; text-align: right; border-bottom: 2px solid var(--ink);">Count</th>
+  </tr>
+  <tr><td style="padding:6px 8px; border-bottom: 1px solid var(--line-soft); color: var(--crit); font-weight: 700;">Critical</td>
+      <td style="padding:6px 8px; border-bottom: 1px solid var(--line-soft); text-align: right;">{{ counts.CRITICAL or 0 }}</td></tr>
+  <tr><td style="padding:6px 8px; border-bottom: 1px solid var(--line-soft); color: var(--high); font-weight: 700;">High</td>
+      <td style="padding:6px 8px; border-bottom: 1px solid var(--line-soft); text-align: right;">{{ counts.HIGH or 0 }}</td></tr>
+  <tr><td style="padding:6px 8px; border-bottom: 1px solid var(--line-soft); color: var(--med); font-weight: 700;">Medium</td>
+      <td style="padding:6px 8px; border-bottom: 1px solid var(--line-soft); text-align: right;">{{ counts.MEDIUM or 0 }}</td></tr>
+  <tr><td style="padding:6px 8px; border-bottom: 1px solid var(--line-soft); color: var(--low); font-weight: 700;">Low</td>
+      <td style="padding:6px 8px; border-bottom: 1px solid var(--line-soft); text-align: right;">{{ counts.LOW or 0 }}</td></tr>
+  <tr><td style="padding:6px 8px; color: var(--info); font-weight: 700;">Informational</td>
+      <td style="padding:6px 8px; text-align: right;">{{ counts.INFO or 0 }}</td></tr>
+</table>
+
+<!-- 3. Detailed Findings -->
+<h2>3. Detailed Findings &amp; Supporting Evidence</h2>
+
+{% if not findings %}
+<div class="no-findings">
+  No findings produced by the deterministic engine within the configured focus areas.
+  Refer to the AI-augmented technical report for additional observations.
+</div>
+{% endif %}
+
+{% for f in findings %}
+<div class="finding sev-{{ f.severity }}">
+  <div class="finding-header">
+    <span class="num">Finding {{ "%02d"|format(loop.index) }}</span>
+    <span class="title">{{ f.title }}</span>
+    <span class="sev-pill sev-{{ f.severity }}">{{ f.severity }}</span>
+  </div>
+  <div class="finding-body">
+    <p class="finding-summary">{{ f.summary }}</p>
+    <p>{{ f.detail }}</p>
+
+    {% if f.attack %}
+    <div class="attack-tags">
+      <span class="attack-label">MITRE ATT&amp;CK</span>
+      {% for t in f.attack %}<span class="attack-pill">{{ t }}</span>{% endfor %}
+    </div>
+    {% endif %}
+
+    {% if f.evidence %}
+      {% for ev in f.evidence %}
+      {% if ev.image_path %}
+      <figure class="exhibit-figure">
+        <img src="{{ ev.image_path }}" alt="Exhibit {{ loop.index }}: {{ ev.title }}">
+        <figcaption>Exhibit {{ loop.index }}: {{ ev.title }} — <span class="mono">{{ ev.source }}</span></figcaption>
+      </figure>
+      {% else %}
+      <div class="evidence-card">
+        <div class="card-header">
+          <span>EXHIBIT {{ loop.index }}: {{ ev.title }}</span>
+          <span class="source">{{ ev.source }}</span>
+        </div>
+        <div class="card-body">
+          <table>
+            <thead>
+              <tr>{% for h in ev.headers %}<th>{{ h }}</th>{% endfor %}</tr>
+            </thead>
+            <tbody>
+              {% for row in ev.rows %}
+              <tr>
+                {% for cell in row %}
+                  {% set col = ev.headers[loop.index0] %}
+                  <td class="{{ 'highlight' if col in ev.highlight else '' }}">{{ cell }}</td>
+                {% endfor %}
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      {% endif %}
+      {% endfor %}
+    {% endif %}
+
+    {% if f.iocs %}
+    <div class="ioc-list">
+      <div class="label">Indicators of compromise extracted ({{ f.iocs|length }})</div>
+      <ul>
+        {% for ioc in f.iocs[:25] %}<li>{{ ioc }}</li>{% endfor %}
+      </ul>
+      {% if f.iocs|length > 25 %}<p style="color: #888; font-style: italic;">… and {{ f.iocs|length - 25 }} more (see findings.jsonl)</p>{% endif %}
+    </div>
+    {% endif %}
+  </div>
+</div>
+{% endfor %}
+
+<!-- 4. Methodology -->
+<h2>4. Methodology &amp; Reproducibility</h2>
+<p>This report was produced by a deterministic forensic-investigation engine. No machine-learning
+inference or large language model output is incorporated in any finding above; every assertion
+maps directly to one or more artifact rows that the reader can independently verify by inspecting
+the parsed CSV/JSONL files in the case output directory.</p>
+
+<h4>Sources Consulted</h4>
+<ul>
+  <li>Windows registry artifacts (USBSTOR, Persistence, Services, Scheduled Tasks)</li>
+  <li>Browser history (Chrome / Edge — via Hindsight or direct SQLite read)</li>
+  <li>Execution artifacts (Prefetch, Amcache)</li>
+  <li>Filesystem metadata ($MFT)</li>
+  <li>LNK shortcuts in Recent</li>
+  <li>Windows event logs (Security, System, PowerShell, Sysmon, etc.)</li>
+</ul>
+
+<h4>Indicator Sets Applied</h4>
+<ul>
+  <li>{{ stats.cloud_domains }} cloud-storage domains</li>
+  <li>{{ stats.fileshare_domains }} anonymous file-sharing domains</li>
+  <li>{{ stats.email_domains }} personal-webmail domains</li>
+  <li>{{ stats.privacy_domains }} privacy / VPN / Tor domains</li>
+  <li>{{ stats.hacktools }} known offensive-security tool names</li>
+</ul>
+
+{% if tools_used %}
+<h4>Tooling Manifest</h4>
+<table style="width:100%; border-collapse: collapse; margin: 8px 0; font-size: 10pt;">
+  <tr style="background:#fafafa;">
+    <th style="padding:6px 8px; text-align:left; border-bottom:2px solid var(--ink);">Tool</th>
+    <th style="padding:6px 8px; text-align:left; border-bottom:2px solid var(--ink);">Role</th>
+    <th style="padding:6px 8px; text-align:left; border-bottom:2px solid var(--ink);">Status</th>
+  </tr>
+  {% for t in tools_used %}
+  <tr>
+    <td style="padding:5px 8px; border-bottom:1px solid var(--line-soft); font-family:Consolas,monospace;">{{ t.name }}</td>
+    <td style="padding:5px 8px; border-bottom:1px solid var(--line-soft);">{{ t.role }}</td>
+    <td style="padding:5px 8px; border-bottom:1px solid var(--line-soft); color: {{ '#1f8b4c' if t.present else '#888' }};">{{ 'available' if t.present else 'not installed' }}</td>
+  </tr>
+  {% endfor %}
+</table>
+{% endif %}
+
+<h4>Evidence Handling &amp; Chain of Custody</h4>
+<p>The forensic image was accessed read-only at mount point
+<span class="mono">{{ evidence_source or "N/A" }}</span>. Artifacts were copied to the case
+output directory and parsed with the tools listed above; original evidence was not modified.
+Each exhibit in Section&nbsp;3 is reproduced from a parsed artifact whose source path is printed
+in the exhibit caption, allowing independent verification against the underlying data.</p>
+
+<!-- 5. Conclusion -->
+<div class="conclusion">
+  <h2>5. Conclusion</h2>
+  {% if conclusion %}
+    <p>{{ conclusion|replace("\n\n", "</p><p>")|safe }}</p>
+  {% else %}
+  <p>The above findings constitute the deterministic engine's assessment of the supplied
+  forensic image against the case-specific focus areas derived from the investigative brief.
+  Each numbered finding includes the supporting exhibit(s) directly extracted from parsed
+  artifacts; analysts should validate each exhibit against the underlying source data and
+  consider any corroborating evidence outside the scope of this automated pass.</p>
+  <p>Where the AI-augmented technical report adds further observations, those are clearly
+  labelled as such and may include heuristic conclusions that this deterministic report does
+  not endorse.</p>
+  {% endif %}
+</div>
+
+<!-- 6. Limitations -->
+<h2>6. Scope &amp; Limitations</h2>
+<ul>
+  <li>This pass is bounded by the artifacts present on the supplied image and the focus
+      areas derived from the brief; absence of a finding is not proof that an activity did not occur.</li>
+  <li>Timestamps reflect the source artifact's recorded values and are subject to clock skew,
+      time-zone interpretation, and anti-forensic tampering.</li>
+  <li>Deterministic detections are based on curated indicator sets; novel or renamed tooling
+      may evade name-based matching.</li>
+  <li>Where external binaries (capa, YARA, EvtxECmd, Hayabusa) were not installed, the
+      corresponding analysis was skipped — see the Tooling Manifest above.</li>
+</ul>
+
+<!-- 6b. ATT&CK coverage -->
+{% if attack_techniques %}
+<h2>6.1 MITRE ATT&amp;CK Techniques Observed</h2>
+<p>The techniques below were tagged across the findings in this report. A Navigator
+layer (<span class="mono">attack_navigator.json</span>) is written alongside this report
+for import at the ATT&amp;CK Navigator.</p>
+<div class="attack-tags">
+  {% for tid, hits in attack_techniques %}<span class="attack-pill">{{ tid }} ({{ hits }})</span>{% endfor %}
+</div>
+{% endif %}
+
+<!-- 6c. Consolidated IOC roll-up -->
+{% if ioc_rollup %}
+<h2>6.2 Consolidated Indicators of Compromise</h2>
+<p>De-duplicated indicators aggregated across all findings (full export:
+<span class="mono">ioc_rollup.json</span>).</p>
+{% for typ, vals in ioc_rollup.items() %}
+<h4>{{ typ|upper }} ({{ vals|length }})</h4>
+<div class="ioc-list"><ul>
+  {% for v in vals[:60] %}<li>{{ v }}</li>{% endfor %}
+</ul>{% if vals|length > 60 %}<p style="color:#888;font-style:italic;">… and {{ vals|length - 60 }} more</p>{% endif %}</div>
+{% endfor %}
+{% endif %}
+
+<!-- 7. Glossary -->
+<h2>7. Glossary</h2>
+<table style="width:100%; border-collapse: collapse; font-size: 10pt;">
+  <tr><td style="padding:4px 8px; font-weight:700; width:170px; vertical-align:top;">Amcache</td>
+      <td style="padding:4px 8px;">Registry hive recording program-execution metadata, including SHA-1 of executed binaries.</td></tr>
+  <tr><td style="padding:4px 8px; font-weight:700; vertical-align:top;">Prefetch</td>
+      <td style="padding:4px 8px;">Windows execution-acceleration files that evidence which programs ran and when.</td></tr>
+  <tr><td style="padding:4px 8px; font-weight:700; vertical-align:top;">Shellbags</td>
+      <td style="padding:4px 8px;">Registry records of folders a user browsed in Explorer, surviving deletion of the folder.</td></tr>
+  <tr><td style="padding:4px 8px; font-weight:700; vertical-align:top;">USN Journal</td>
+      <td style="padding:4px 8px;">NTFS change journal recording file create/rename/delete operations.</td></tr>
+  <tr><td style="padding:4px 8px; font-weight:700; vertical-align:top;">MITRE ATT&amp;CK</td>
+      <td style="padding:4px 8px;">A knowledge base of adversary techniques; technique IDs (T####) tag findings to a common taxonomy.</td></tr>
+</table>
+
+<footer>
+  <p>{{ customer_name }} — Case {{ case_reference }} — Generated {{ generated_at }}</p>
+  <p style="font-size:9pt;">Engine: deterministic-only · No AI · Report fingerprint: {{ report_fingerprint or "n/a" }}</p>
+</footer>
+
+</body>
+</html>

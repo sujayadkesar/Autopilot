@@ -1,0 +1,15 @@
+name: pca_jumplists_wer
+display_name: "PCA / JumpLists / Scheduled Tasks / WER"
+description: >
+  Pure-Python parsers for high-value Windows artefacts that need NO external tool:
+  Program Compatibility Assistant (Win 11 program execution proof),
+  Scheduled Task XML definitions (on-disk persistence beyond registry/EVTX),
+  Windows Error Reporting (crash telemetry as execution evidence),
+  Jump Lists (App ID + recent file correlation, parsed via OLE).
+version: "1.0"
+enabled_by_default: true
+artifact_subdirs:
+  - pca
+  - scheduled_tasks
+  - wer
+  - jumplists

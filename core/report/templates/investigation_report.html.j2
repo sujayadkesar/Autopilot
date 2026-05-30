@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Investigation Report — {{ customer_name }}</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#f8fafc;--surface:#ffffff;--surface2:#f1f5f9;--surface3:#e2e8f0;
+  --border:#cbd5e1;--text:#1e293b;--muted:#64748b;--accent:#1d4ed8;
+  --critical:#dc2626;--high:#ea580c;--medium:#ca8a04;--low:#16a34a;--info:#2563eb;
+  --crit-bg:#fef2f2;--high-bg:#fff7ed;--med-bg:#fefce8;--low-bg:#f0fdf4;
+  --font:'Georgia','Times New Roman',serif;--sans:'Segoe UI',system-ui,sans-serif;--mono:'Cascadia Code','Consolas',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:15px;line-height:1.75}
+a{color:var(--accent);text-decoration:none}
+
+@media print{
+  .no-print{display:none!important}
+  body{font-size:11pt}
+  .cover-page{page-break-after:always}
+  .section-break{page-break-before:always}
+  .finding-block{page-break-inside:avoid}
+}
+
+/* HEADER */
+.hdr{background:#fff;border-bottom:3px solid var(--accent);padding:14px 48px;
+     position:sticky;top:0;z-index:100;display:flex;align-items:center;
+     justify-content:space-between;box-shadow:0 1px 4px #0001}
+.hdr-brand{font-family:var(--sans);font-weight:800;font-size:1em;color:var(--accent);letter-spacing:1px}
+.hdr-meta{font-family:var(--sans);font-size:0.75em;color:var(--muted)}
+
+/* LAYOUT */
+.layout{display:grid;grid-template-columns:200px 1fr;min-height:calc(100vh - 52px)}
+
+/* SIDEBAR */
+.sidebar{background:#fff;border-right:1px solid var(--border);padding:20px 0;
+         position:sticky;top:52px;height:calc(100vh - 52px);overflow-y:auto}
+.sidebar-section{font-family:var(--sans);font-size:0.63em;text-transform:uppercase;
+                 letter-spacing:2px;color:var(--muted);padding:12px 18px 4px;margin-top:8px}
+.sidebar a{display:block;padding:5px 18px;font-family:var(--sans);font-size:0.8em;
+           color:var(--muted);border-left:3px solid transparent;transition:all .1s}
+.sidebar a:hover{color:var(--accent);border-left-color:var(--accent);background:var(--surface2)}
+
+/* MAIN */
+.main{padding:48px 60px;max-width:860px}
+
+/* COVER */
+.cover-page{margin-bottom:56px}
+.cover-classification{display:inline-block;border:2px solid var(--critical);color:var(--critical);
+                      font-family:var(--sans);font-size:0.7em;font-weight:700;
+                      letter-spacing:3px;text-transform:uppercase;padding:4px 14px;
+                      border-radius:3px;margin-bottom:32px}
+.cover-rule{width:60px;height:4px;background:var(--accent);border-radius:2px;margin-bottom:24px}
+.cover-title{font-size:2.4em;font-weight:700;color:var(--text);line-height:1.2;margin-bottom:12px}
+.cover-subtitle{font-size:1.1em;color:var(--muted);font-style:italic;margin-bottom:40px;font-family:var(--sans)}
+.cover-table{width:100%;border-collapse:collapse;margin-bottom:32px}
+.cover-table td{padding:10px 16px;border:1px solid var(--border);font-family:var(--sans);font-size:0.88em}
+.cover-table td:first-child{background:var(--surface2);font-weight:600;color:var(--muted);
+                             text-transform:uppercase;letter-spacing:0.5px;font-size:0.75em;width:35%}
+.cover-table td:last-child{background:#fff;color:var(--text);font-weight:500}
+.cover-prompt-box{background:var(--surface2);border:1px solid var(--border);border-left:4px solid var(--accent);
+                  border-radius:4px;padding:16px 20px;font-size:0.88em;font-style:italic;
+                  color:var(--muted);font-family:var(--sans)}
+.cover-prompt-label{font-weight:700;font-style:normal;color:var(--text);margin-bottom:6px;font-size:0.78em;
+                    text-transform:uppercase;letter-spacing:1px}
+
+/* HEADINGS */
+h2{font-size:1.3em;font-weight:700;color:var(--accent);margin:36px 0 14px;
+   padding-bottom:8px;border-bottom:2px solid var(--border)}
+h2.section-number::before{content:attr(data-num) '. ';color:var(--muted);font-size:0.8em;font-style:italic}
+h3{font-size:1.05em;font-weight:700;color:var(--text);margin:24px 0 10px}
+p{margin-bottom:14px;font-size:0.95em}
+
+/* VERDICT BLOCK */
+.verdict{background:var(--crit-bg);border:1px solid var(--critical);border-radius:8px;
+         padding:20px 24px;margin-bottom:24px;font-family:var(--sans)}
+.verdict.high{background:var(--high-bg);border-color:var(--high)}
+.verdict.medium{background:var(--med-bg);border-color:var(--medium)}
+.verdict.low{background:var(--low-bg);border-color:var(--low)}
+.verdict-label{font-size:0.65em;text-transform:uppercase;letter-spacing:2px;font-weight:700;margin-bottom:6px;color:var(--muted)}
+.verdict-text{font-size:1em;font-weight:600;color:var(--text)}
+
+/* FINDING BLOCKS */
+.finding-block{background:var(--surface);border:1px solid var(--border);
+               border-radius:8px;margin-bottom:20px;overflow:hidden;font-family:var(--sans)}
+.finding-block-hdr{display:flex;align-items:center;gap:12px;padding:12px 18px;
+                   background:var(--surface2);border-bottom:1px solid var(--border)}
+.finding-block.CRITICAL .finding-block-hdr{border-left:5px solid var(--critical);background:var(--crit-bg)}
+.finding-block.HIGH .finding-block-hdr{border-left:5px solid var(--high);background:var(--high-bg)}
+.finding-block.MEDIUM .finding-block-hdr{border-left:5px solid var(--medium);background:var(--med-bg)}
+.finding-block.LOW .finding-block-hdr{border-left:5px solid var(--low);background:var(--low-bg)}
+.finding-block-title{font-weight:700;font-size:0.92em;flex:1}
+.finding-block-body{padding:16px 18px;font-size:0.86em;line-height:1.7;color:var(--text)}
+.evidence-ref{background:var(--surface2);border:1px solid var(--border);border-radius:4px;
+              padding:8px 12px;font-family:var(--mono);font-size:0.78em;color:#4b5563;margin-top:10px;
+              word-break:break-all}
+.evidence-ref-label{font-family:var(--sans);font-weight:600;font-size:0.7em;
+                    text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;color:var(--muted)}
+
+/* BADGE */
+.badge{display:inline-block;padding:2px 9px;border-radius:3px;font-family:var(--sans);
+       font-size:0.68em;font-weight:700;letter-spacing:0.5px;border:1px solid}
+.badge-CRITICAL{color:var(--critical);border-color:var(--critical);background:var(--crit-bg)}
+.badge-HIGH{color:var(--high);border-color:var(--high);background:var(--high-bg)}
+.badge-MEDIUM{color:var(--medium);border-color:var(--medium);background:var(--med-bg)}
+.badge-LOW{color:var(--low);border-color:var(--low);background:var(--low-bg)}
+.badge-INFO{color:var(--info);border-color:var(--info)}
+
+/* NUMBERED LIST */
+ol.evidence-list{padding-left:20px;font-family:var(--sans);font-size:0.9em}
+ol.evidence-list li{margin-bottom:8px;padding-left:4px;line-height:1.6}
+ul.bullet-list{list-style:disc;padding-left:20px;font-family:var(--sans);font-size:0.9em}
+ul.bullet-list li{margin-bottom:6px;line-height:1.6}
+
+/* TABLES */
+.tbl-wrap{overflow-x:auto;border-radius:6px;border:1px solid var(--border);margin-bottom:16px}
+table{width:100%;border-collapse:collapse;font-family:var(--sans);font-size:0.82em}
+thead tr{background:var(--surface2)}
+th{padding:8px 14px;text-align:left;font-weight:700;color:var(--muted);
+   border-bottom:1px solid var(--border);font-size:0.75em;text-transform:uppercase;letter-spacing:0.5px}
+td{padding:7px 14px;border-bottom:1px solid var(--border);color:var(--text)}
+tr:last-child td{border-bottom:none}
+.mono-cell{font-family:var(--mono);font-size:0.85em;word-break:break-all}
+
+/* IOC */
+.ioc-tag{display:inline-block;background:var(--surface2);border:1px solid var(--border);
+         border-radius:4px;padding:1px 8px;font-family:var(--mono);font-size:0.8em;
+         color:var(--accent);margin:2px}
+
+/* RECOMMENDATIONS */
+.rec-item{display:flex;gap:14px;align-items:flex-start;margin-bottom:16px;
+          background:#fff;border:1px solid var(--border);border-radius:8px;padding:14px 18px;
+          font-family:var(--sans)}
+.rec-num{background:var(--accent);color:#fff;border-radius:50%;width:26px;height:26px;
+         display:flex;align-items:center;justify-content:center;font-size:0.75em;
+         font-weight:700;flex-shrink:0;margin-top:1px}
+.rec-text{font-size:0.88em;line-height:1.65;color:var(--text)}
+
+/* DIVIDER */
+hr{border:none;border-top:1px solid var(--border);margin:40px 0}
+.no-data{color:var(--muted);font-style:italic;font-family:var(--sans);font-size:0.88em}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{display:none}.main{padding:24px}}
+</style>
+</head>
+<body>
+
+<header class="hdr no-print">
+  <div class="hdr-brand">DFIR Investigation Report</div>
+  <div class="hdr-meta">{{ customer_name }} &nbsp;&middot;&nbsp; {{ case_reference }} &nbsp;&middot;&nbsp; {{ investigation_date }}</div>
+</header>
+
+<div class="layout">
+<nav class="sidebar no-print">
+  <div class="sidebar-section">Report</div>
+  <a href="#cover">Cover &amp; Case Info</a>
+  <a href="#overview">Investigation Overview</a>
+  <a href="#key-findings">Key Findings</a>
+  {% if ioc_map %}<a href="#ioc-list">IOC List</a>{% endif %}
+  <a href="#recommendations">Recommendations</a>
+  {% if conclusion %}<a href="#conclusion">Conclusion</a>{% endif %}
+</nav>
+
+<main class="main">
+
+<!-- COVER -->
+<section id="cover">
+  <div class="cover-page">
+    <div class="cover-classification">CONFIDENTIAL &mdash; Restricted</div>
+    <div class="cover-rule"></div>
+    <div class="cover-title">{{ report_title }}</div>
+    <div class="cover-subtitle">Digital Forensics &amp; Incident Response Investigation</div>
+
+    <table class="cover-table">
+      <tr><td>Client / Organisation</td><td>{{ customer_name }}</td></tr>
+      <tr><td>Case Reference</td><td>{{ case_reference }}</td></tr>
+      <tr><td>Investigation Date</td><td>{{ investigation_date }}</td></tr>
+      <tr><td>Subject Computer</td><td>{{ system_info.get('ComputerName','Unknown') }}</td></tr>
+      <tr><td>Operating System</td><td>{{ system_info.get('os_info',{}).get('ProductName','Windows') }}{% if system_info.get('os_info',{}).get('CurrentBuildNumber') %} (Build {{ system_info.get('os_info',{}).get('CurrentBuildNumber','') }}){% endif %}</td></tr>
+      <tr><td>Registered User</td><td>{{ system_info.get('os_info',{}).get('RegisteredOwner','Unknown') }}</td></tr>
+      <tr><td>Report Generated</td><td>{{ generated_at }}</td></tr>
+      <tr><td>Analysis Engine</td><td>{{ llm_model }}</td></tr>
+    </table>
+
+    {% if investigation_prompt %}
+    <div class="cover-prompt-box">
+      <div class="cover-prompt-label">Investigation Scope &amp; Brief</div>
+      {{ investigation_prompt | replace('\n','<br>') | safe }}
+    </div>
+    {% endif %}
+  </div>
+</section>
+
+<hr>
+
+<!-- OVERVIEW -->
+<section id="overview">
+  <h2 class="section-number" data-num="1">Investigation Overview</h2>
+
+  <div class="verdict {% if counts.CRITICAL > 0 %}critical{% elif counts.HIGH > 2 %}high{% elif counts.HIGH > 0 %}medium{% else %}low{% endif %}">
+    <div class="verdict-label">Overall Risk Assessment</div>
+    <div class="verdict-text">
+      {% if counts.CRITICAL > 0 %}
+        CRITICAL — Active or recent compromise indicators found. Immediate action required.
+      {% elif counts.HIGH > 2 %}
+        HIGH — Multiple high-severity indicators detected. Investigation should be escalated.
+      {% elif counts.HIGH > 0 %}
+        ELEVATED — Suspicious activity confirmed. Further investigation warranted.
+      {% else %}
+        LOW — No significant indicators of compromise identified.
+      {% endif %}
+    </div>
+  </div>
+
+  <p>
+    This investigation analysed the Windows forensic image of computer
+    <strong>{{ system_info.get('ComputerName','the subject machine') }}</strong>
+    belonging to <strong>{{ customer_name }}</strong>.
+    The forensic pipeline executed {{ agents_run|length }} analysis module(s) —
+    {{ agents_run | map('replace','_',' ') | map('title') | join(', ') }}.
+  </p>
+  <p>
+    A total of <strong>{{ sorted_findings|length }} findings</strong> were identified:
+    <span style="color:var(--critical);font-weight:600">{{ counts.CRITICAL }} Critical</span>,
+    <span style="color:var(--high);font-weight:600">{{ counts.HIGH }} High</span>,
+    <span style="color:var(--medium);font-weight:600">{{ counts.MEDIUM }} Medium</span>,
+    <span style="color:var(--low);font-weight:600">{{ counts.LOW }} Low</span>.
+  </p>
+
+  {% if exec_summary and exec_summary != 'Executive summary unavailable (LLM not reachable).' %}
+  <h3>Analyst Summary</h3>
+  {% for para in exec_summary.split('\n') %}{% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}{% endfor %}
+  {% endif %}
+</section>
+
+<hr>
+
+<!-- KEY FINDINGS -->
+<section id="key-findings">
+  <h2 class="section-number" data-num="2">Key Findings &amp; Evidence</h2>
+
+  {% if sorted_findings %}
+  {% for f in sorted_findings %}
+  {% if f.severity in ('CRITICAL','HIGH','MEDIUM') %}
+  <div class="finding-block {{ f.severity }}">
+    <div class="finding-block-hdr">
+      <span class="badge badge-{{ f.severity }}">{{ f.severity }}</span>
+      <div class="finding-block-title">{{ f.title }}</div>
+      <span style="color:var(--muted);font-size:0.75em;white-space:nowrap">{{ f.agent | replace('_',' ') | title }}</span>
+    </div>
+    <div class="finding-block-body">
+      <p>{{ f.detail }}</p>
+      {% if f.ioc and f.ioc|length > 1 %}
+      <div class="evidence-ref-label">Indicator of Compromise</div>
+      <div class="evidence-ref">{{ f.ioc }}</div>
+      {% endif %}
+      {% if f.timestamp %}
+      <p style="color:var(--muted);font-size:0.8em;margin-top:8px;margin-bottom:0">
+        Timestamp: <strong>{{ f.timestamp }}</strong>
+      </p>
+      {% endif %}
+    </div>
+  </div>
+  {% endif %}
+  {% endfor %}
+
+  {% set lower_findings = sorted_findings | selectattr('severity','in',['LOW','INFO']) | list %}
+  {% if lower_findings %}
+  <h3>Additional Observations (Low / Informational)</h3>
+  <ol class="evidence-list">
+    {% for f in lower_findings %}
+    <li><strong>{{ f.title }}</strong> — {{ f.detail[:200] }}{% if f.detail|length > 200 %}…{% endif %}</li>
+    {% endfor %}
+  </ol>
+  {% endif %}
+
+  {% else %}
+  <div class="no-data">No significant findings identified in this investigation.</div>
+  {% endif %}
+</section>
+
+<!-- IOC LIST -->
+{% if ioc_map %}
+<hr>
+<section id="ioc-list">
+  <h2 class="section-number" data-num="3">Indicators of Compromise</h2>
+  <p>The following indicators were extracted during analysis and should be used for detection, blocking, and threat hunting:</p>
+  <div class="tbl-wrap">
+    <table>
+      <thead><tr><th>#</th><th>Indicator Value</th><th>Source</th></tr></thead>
+      <tbody>
+      {% for ioc, sources in ioc_map.items() %}
+        <tr>
+          <td style="color:var(--muted);font-size:0.75em">{{ loop.index }}</td>
+          <td class="mono-cell">{{ ioc }}</td>
+          <td style="color:var(--muted);font-size:0.8em">{{ sources | join(', ') }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endif %}
+
+<!-- RECOMMENDATIONS -->
+<hr>
+<section id="recommendations">
+  <h2 class="section-number" data-num="{{ '4' if ioc_map else '3' }}">Recommendations</h2>
+  <p>Based on the findings of this investigation, the following actions are recommended:</p>
+
+  {% if recommendations %}
+  {% for rec in recommendations %}
+  <div class="rec-item">
+    <div class="rec-num">{{ loop.index }}</div>
+    <div class="rec-text">{{ rec }}</div>
+  </div>
+  {% endfor %}
+  {% else %}
+  {% set crit_high = sorted_findings | selectattr('severity','in',['CRITICAL','HIGH']) | list %}
+  {% if crit_high %}
+  <div class="rec-item">
+    <div class="rec-num">1</div>
+    <div class="rec-text">Isolate the subject system immediately to prevent further data exfiltration or lateral movement.</div>
+  </div>
+  <div class="rec-item">
+    <div class="rec-num">2</div>
+    <div class="rec-text">Preserve all forensic artifacts before any remediation. Create verified forensic images of all storage media.</div>
+  </div>
+  <div class="rec-item">
+    <div class="rec-num">3</div>
+    <div class="rec-text">Escalate all CRITICAL and HIGH findings to the incident response team and legal counsel immediately.</div>
+  </div>
+  {% if ioc_map %}
+  <div class="rec-item">
+    <div class="rec-num">4</div>
+    <div class="rec-text">Block all identified IOCs at the network perimeter (firewall, DNS sinkhole, email gateway) and distribute to the SOC for hunting.</div>
+  </div>
+  {% endif %}
+  <div class="rec-item">
+    <div class="rec-num">{{ '5' if ioc_map else '4' }}</div>
+    <div class="rec-text">Conduct a broader network investigation to determine if the compromise is isolated to this system or represents a wider intrusion.</div>
+  </div>
+  {% else %}
+  <div class="rec-item">
+    <div class="rec-num">1</div>
+    <div class="rec-text">No immediate critical actions required. Continue routine monitoring and scheduled vulnerability assessments.</div>
+  </div>
+  {% endif %}
+  {% endif %}
+</section>
+
+<!-- CONCLUSION -->
+{% if conclusion %}
+<hr>
+<section id="conclusion">
+  <h2 class="section-number" data-num="{{ '5' if ioc_map else '4' }}">Conclusion</h2>
+  {% for para in conclusion.split('\n') %}{% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}{% endfor %}
+</section>
+{% endif %}
+
+<hr>
+<div style="text-align:center;color:var(--muted);font-family:var(--sans);font-size:0.75em;padding-bottom:32px">
+  <em>This report was generated automatically by the DFIR Automation Suite. All findings should be reviewed and verified by a qualified forensic examiner before being presented as evidence.</em><br>
+  Case Reference: {{ case_reference }} &nbsp;&middot;&nbsp; Generated: {{ generated_at }}
+</div>
+
+</main>
+</div>
+</body>
+</html>

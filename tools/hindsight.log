@@ -1,0 +1,211 @@
+2026-04-26 09:35:22.247 | I | 
+################################################################################
+##    Hindsight v2026.01 (https://github.com/obsidianforensics/hindsight)     ##
+################################################################################
+2026-04-26 09:36:29.321 | I | 
+################################################################################
+##    Hindsight v2026.01 (https://github.com/obsidianforensics/hindsight)     ##
+################################################################################
+2026-04-26 09:36:36.506 | I | 
+################################################################################
+##    Hindsight v2026.01 (https://github.com/obsidianforensics/hindsight)     ##
+################################################################################
+2026-04-26 22:43:03.851 | I | 
+################################################################################
+##    Hindsight v2026.01 (https://github.com/obsidianforensics/hindsight)     ##
+################################################################################
+2026-04-26 22:50:26.771 | I | 
+################################################################################
+##    Hindsight v2026.01 (https://github.com/obsidianforensics/hindsight)     ##
+################################################################################
+2026-04-26 22:51:25.533 | I | 
+################################################################################
+##    Hindsight v2026.01 (https://github.com/obsidianforensics/hindsight)     ##
+################################################################################
+2026-04-26 22:51:25.539 | D | Profile paths: ['F:\\Users\\Patrick\\AppData\\Local\\Google\\Chrome\\User Data\\Default']
+2026-04-26 22:51:25.548 | D | Options: {'input_path': 'F:\\Users\\Patrick\\AppData\\Local\\Google\\Chrome\\User Data\\Default', 'profile_paths': None, 'cache_path': None, 'browser_type': 'Chrome', 'available_input_types': ['Chrome'], 'version': [], 'display_version': None, 'output_name': '..\\v5\\parsed_artifacts\\usn_lnk_mru\\browsers\\report.xlsx', 'log_path': 'C:\\Users\\sujay\\Desktop\\dfir-automation\\tools\\hindsight.log', 'no_copy': False, 'temp_dir': 'C:\\Users\\sujay\\Desktop\\dfir-automation\\tools\\hindsight-temp', 'timezone': <UTC>, 'available_output_formats': ['sqlite', 'jsonl', 'xlsx'], 'selected_output_format': 'xlsx', 'available_decrypts': {'windows': 0, 'mac': 0, 'linux': 0}, 'selected_decrypts': None, 'parsed_artifacts': [], 'artifacts_display': None, 'artifacts_counts': {}, 'parsed_storage': [], 'parsed_extension_data': [], 'parsed_sync_data': [], 'originator_guids': {}, 'plugin_descriptions': None, 'selected_plugins': None, 'plugin_results': {}, 'hindsight_version': '2026.01', 'preferences': [], 'fatal_error': None}
+2026-04-26 22:51:25.548 | I | Starting analysis
+2026-04-26 22:51:25.548 | I | Reading files from F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default
+2026-04-26 22:51:25.549 | D | Input directory contents: ['Accounts', 'Affiliation Database', 'Affiliation Database-journal', 'AutofillStrikeDatabase', 'blob_storage', 'Bookmarks', 'BudgetDatabase', 'Cache', 'chrome_cart_db', 'Code Cache', 'coupon_db', 'databases', 'data_reduction_proxy_leveldb', 'Download Service', 'DownloadMetadata', 'Extension Rules', 'Extension Scripts', 'Extension State', 'Extensions', 'Favicons', 'Favicons-journal', 'Feature Engagement Tracker', 'File System', 'GCM Store', 'Google Profile Picture.png', 'Google Profile.ico', 'GPUCache', 'heavy_ad_intervention_opt_out.db', 'heavy_ad_intervention_opt_out.db-journal', 'History', 'History-journal', 'IndexedDB', 'Local Extension Settings', 'Local Storage', 'LOCK', 'LOG', 'LOG.old', 'Login Data', 'Login Data For Account', 'Login Data For Account-journal', 'Login Data-journal', 'Network', 'Network Action Predictor', 'Network Action Predictor-journal', 'optimization_guide_hint_cache_store', 'optimization_guide_model_and_features_store', 'Platform Notifications', 'Preferences', 'PreferredApps', 'QuotaManager', 'QuotaManager-journal', 'Safe Browsing Network', 'Search Logos', 'Secure Preferences', 'Service Worker', 'Session Storage', 'Sessions', 'shared_proto_db', 'Shortcuts', 'Shortcuts-journal', 'Site Characteristics Database', 'Storage', 'Sync Data', 'Top Sites', 'Top Sites-journal', 'Trusted Vault', 'VideoDecodeStats', 'Visited Links', 'Web Data', 'Web Data-journal']
+2026-04-26 22:51:25.550 | D | Profile paths: ['F:\\Users\\Patrick\\AppData\\Local\\Google\\Chrome\\User Data\\Default']
+2026-04-26 22:51:25.550 | I |  - Found 1 browser profile(s): ['F:\\Users\\Patrick\\AppData\\Local\\Google\\Chrome\\User Data\\Default']
+2026-04-26 22:51:25.550 | D | Supported items: ['History', 'Archived History', 'Media History', 'Web Data', 'Cookies', 'Login Data', 'Login Data For AccountExtension Cookies', 'Network Action Predictor', 'DIPS', 'Local Storage', 'Extensions', 'File System', 'Platform Notifications', 'Network', 'Bookmarks', 'TransportSecurity']
+2026-04-26 22:51:25.550 | I |  - Reading from History in F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default
+2026-04-26 22:51:25.566 | I |  - Reading from Login Data in F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default
+2026-04-26 22:51:25.576 | I |  - Reading from Network Action Predictor in F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default
+2026-04-26 22:51:25.588 | I |  - Reading from Web Data in F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default
+2026-04-26 22:51:25.603 | I |  - Reading from Cookies in F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default
+2026-04-26 22:51:25.603 | I |    - Failed; Cookies does not exist in F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default
+2026-04-26 22:51:25.604 | D | Analyzing 'History' structure
+2026-04-26 22:51:25.604 | D |  - Starting possible versions:  [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23, 24, 25, 26, 27, 28, 29, 30, 31, 32, 33, 34, 35, 36, 37, 38, 39, 40, 41, 42, 43, 44, 45, 46, 47, 48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 58, 59, 60, 61, 62, 63, 64, 65, 66, 67, 68, 69, 70, 71, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 96, 97, 98, 99, 100, 101, 102, 103, 104, 105, 106, 107, 108, 109, 110, 111, 112, 113, 114, 115, 116, 117, 118, 119, 120, 121, 122, 123, 124, 125, 126, 127, 128, 129, 130, 131, 132, 133, 134, 135, 136, 137, 138, 139, 140, 141, 142, 143, 144]
+2026-04-26 22:51:25.604 | D |  - Finishing possible versions: [96, 97, 98, 99]
+2026-04-26 22:51:25.604 | D | Analyzing 'Cookies' structure
+2026-04-26 22:51:25.604 | D |  - Starting possible versions:  [96, 97, 98, 99]
+2026-04-26 22:51:25.604 | D |  - Finishing possible versions: [96, 97, 98, 99]
+2026-04-26 22:51:25.604 | D | Analyzing 'Web Data' structure
+2026-04-26 22:51:25.604 | D |  - Starting possible versions:  [96, 97, 98, 99]
+2026-04-26 22:51:25.604 | D |  - Finishing possible versions: [96, 97, 98, 99]
+2026-04-26 22:51:25.604 | D | Analyzing 'Login Data' structure
+2026-04-26 22:51:25.604 | D |  - Starting possible versions:  [96, 97, 98, 99]
+2026-04-26 22:51:25.604 | D |  - Finishing possible versions: [96, 97, 98, 99]
+2026-04-26 22:51:25.604 | D | Analyzing 'Network Action Predictor' structure
+2026-04-26 22:51:25.604 | D |  - Starting possible versions:  [96, 97, 98, 99]
+2026-04-26 22:51:25.604 | D |  - Finishing possible versions: [96, 97, 98, 99]
+2026-04-26 22:51:25.604 | I | Detected Chrome version 96-99
+2026-04-26 22:51:25.604 | I | Found the following supported files or directories:
+2026-04-26 22:51:25.604 | I |  - Bookmarks
+2026-04-26 22:51:25.604 | I |  - Extensions
+2026-04-26 22:51:25.604 | I |  - File System
+2026-04-26 22:51:25.604 | I |  - History
+2026-04-26 22:51:25.604 | I |  - Local Storage
+2026-04-26 22:51:25.604 | I |  - Login Data
+2026-04-26 22:51:25.604 | I |  - Network
+2026-04-26 22:51:25.604 | I |  - Network Action Predictor
+2026-04-26 22:51:25.604 | I |  - Platform Notifications
+2026-04-26 22:51:25.604 | I |  - Web Data
+2026-04-26 22:51:25.610 | I | History items from History
+2026-04-26 22:51:25.610 | I |  - Using SQL query for History items for Chrome 59
+2026-04-26 22:51:25.610 | I |  - Reading from History in F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default
+2026-04-26 22:51:25.615 | I |  - Parsed 111 items
+2026-04-26 22:51:25.616 | I | Download items from History:
+2026-04-26 22:51:25.616 | I |  - Using SQL query for Download items for Chrome v30
+2026-04-26 22:51:25.616 | I |  - Reading from History in F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default
+2026-04-26 22:51:25.619 | I |  - Parsed 2 items
+2026-04-26 22:51:25.619 | I | Autofill items from Web Data:
+2026-04-26 22:51:25.619 | I |  - Using SQL query for Autofill items for Chrome v35
+2026-04-26 22:51:25.619 | I |  - Reading from Web Data in F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default
+2026-04-26 22:51:25.623 | I |  - Parsed 2 items
+2026-04-26 22:51:25.623 | I | Login items from Login Data:
+2026-04-26 22:51:25.623 | I |  - Using SQL query for Login items for Chrome v78
+2026-04-26 22:51:25.623 | I |  - Reading from Login Data in F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default
+2026-04-26 22:51:25.626 | I |  - Using SQL query for Login Stat items for Chrome v48
+2026-04-26 22:51:25.626 | I |  - Reading from Login Data in F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default
+2026-04-26 22:51:25.629 | I |  - Parsed 0 items
+2026-04-26 22:51:25.629 | I | Login items from Login Data For Account:
+2026-04-26 22:51:25.629 | I |  - Using SQL query for Login items for Chrome v78
+2026-04-26 22:51:25.629 | I |  - Reading from Login Data For Account in F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default
+2026-04-26 22:51:25.636 | I |  - Using SQL query for Login Stat items for Chrome v48
+2026-04-26 22:51:25.637 | I |  - Reading from Login Data For Account in F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default
+2026-04-26 22:51:25.639 | I |  - Parsed 4 items
+2026-04-26 22:51:25.640 | I | Bookmark items from Bookmarks:
+2026-04-26 22:51:25.652 | I |  - Reading from file "F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default\Bookmarks"
+2026-04-26 22:51:25.652 | I |  - Parsed 3 items
+2026-04-26 22:51:25.652 | I | Cookie items from Cookies:
+2026-04-26 22:51:25.653 | I |  - Using SQL query for Cookie items for Chrome v66
+2026-04-26 22:51:25.653 | I |  - Reading from Cookies in F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default\Network
+2026-04-26 22:51:25.674 | I |  - Parsed 610 items
+2026-04-26 22:51:25.675 | I | Cache items from F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default\Cache\Cache_Data:
+2026-04-26 22:51:25.676 | I |  - Using ccl_chromium_cache v0.22
+2026-04-26 22:51:37.765 | I |  - Parsed 1205 items
+2026-04-26 22:51:37.775 | I | Cache items from F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default\GPUCache:
+2026-04-26 22:51:37.778 | I |  - Using ccl_chromium_cache v0.22
+2026-04-26 22:51:38.014 | I |  - Parsed 0 items
+2026-04-26 22:51:38.018 | I | Local Storage:
+2026-04-26 22:51:38.019 | I |  - Reading from F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default\Local Storage
+2026-04-26 22:51:38.019 | D |  - 1 files in Local Storage directory
+2026-04-26 22:51:38.020 | D |  - Found "leveldb" directory; reading Local Storage LevelDB records
+2026-04-26 22:51:38.087 | D |  - Reading 877 Local Storage raw LevelDB records; beginning parsing
+2026-04-26 22:51:38.092 | I |  - Parsed 547 items from 0 files
+2026-04-26 22:51:38.092 | I | Session Storage:
+2026-04-26 22:51:38.093 | I |  - Reading from F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default\Session Storage
+2026-04-26 22:51:38.093 | I |  - Using ccl_chromium_sessionstorage v0.6
+2026-04-26 22:51:38.095 | D |  - 6 files in Session Storage directory
+2026-04-26 22:51:38.124 | I |  - Parsed 161 Session Storage items
+2026-04-26 22:51:38.124 | I | IndexedDB:
+2026-04-26 22:51:38.124 | I |  - Reading from F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default\IndexedDB
+2026-04-26 22:51:38.124 | I |  - Using ccl_chromium_indexeddb v0.19
+2026-04-26 22:51:38.124 | D |  - 4 files in IndexedDB directory
+2026-04-26 22:51:39.258 | I |  - Parsed 504 items from 4 files
+2026-04-26 22:51:39.277 | I | File System:
+2026-04-26 22:51:39.277 | I |  - Reading from F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default\File System
+2026-04-26 22:51:39.278 | D |  - 2 files in File System directory: ['000', 'Origins']
+2026-04-26 22:51:39.297 | D |  - Found 't' data directory for origin https_hangouts.google.com_0
+2026-04-26 22:51:39.312 | I |  - Parsed 2 items
+2026-04-26 22:51:39.313 | I | Extensions:
+2026-04-26 22:51:39.313 | I |  - Reading from F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default\Extensions
+2026-04-26 22:51:39.315 | D |  - 8 files in Extensions directory: ['aapocclcgogkmnckokdopfmhonfmgoek', 'aohghmighlieiainnegkcijnfilokake', 'apdfllckaahabafndbhieahigkjlhalf', 'blpcfgokakmgnkcojhhkbfbldkacnbeo', 'felcaaldnbdncclmgdcncolpebgiejap', 'ghbmnnjooekpmoecnnnilnnbdlolhkhi', 'nmmhkkegccagdldgiimedpiccmgmieda', 'pjkljhegncpnkpknbcohdijeoejaedia']
+2026-04-26 22:51:39.316 | D |  - 8 files in Extensions directory will be processed: ['aapocclcgogkmnckokdopfmhonfmgoek', 'aohghmighlieiainnegkcijnfilokake', 'apdfllckaahabafndbhieahigkjlhalf', 'blpcfgokakmgnkcojhhkbfbldkacnbeo', 'felcaaldnbdncclmgdcncolpebgiejap', 'ghbmnnjooekpmoecnnnilnnbdlolhkhi', 'nmmhkkegccagdldgiimedpiccmgmieda', 'pjkljhegncpnkpknbcohdijeoejaedia']
+2026-04-26 22:51:39.528 | I |  - Parsed 8 items
+2026-04-26 22:51:39.529 | I | Extension Rules:
+2026-04-26 22:51:39.529 | I |  - Reading from F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default\Extension Rules
+2026-04-26 22:51:39.529 | I |  - Using ccl_leveldb v0.4
+2026-04-26 22:51:39.529 | D |  - 5 files in Extension Rules directory
+2026-04-26 22:51:39.541 | I |  - Parsed 0 Extension Rules items
+2026-04-26 22:51:39.564 | I | Extension Scripts:
+2026-04-26 22:51:39.564 | I |  - Reading from F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default\Extension Scripts
+2026-04-26 22:51:39.564 | I |  - Using ccl_leveldb v0.4
+2026-04-26 22:51:39.566 | D |  - 6 files in Extension Scripts directory
+2026-04-26 22:51:39.581 | I |  - Parsed 0 Extension Scripts items
+2026-04-26 22:51:39.582 | I | Extension State:
+2026-04-26 22:51:39.582 | I |  - Reading from F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default\Extension State
+2026-04-26 22:51:39.582 | I |  - Using ccl_leveldb v0.4
+2026-04-26 22:51:39.585 | D |  - 6 files in Extension State directory
+2026-04-26 22:51:39.599 | I |  - Parsed 0 Extension State items
+2026-04-26 22:51:39.599 | I | Local Extension Settings:
+2026-04-26 22:51:39.600 | I |  - Reading from F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default\Local Extension Settings
+2026-04-26 22:51:39.601 | D |  - 1 files in Local Extension Settings directory will be processed: ['ghbmnnjooekpmoecnnnilnnbdlolhkhi']
+2026-04-26 22:51:39.602 | I | Local Extension Settings:
+2026-04-26 22:51:39.602 | I |  - Reading from F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default\Local Extension Settings\ghbmnnjooekpmoecnnnilnnbdlolhkhi
+2026-04-26 22:51:39.602 | I |  - Using ccl_leveldb v0.4
+2026-04-26 22:51:39.603 | D |  - 5 files in Local Extension Settings directory
+2026-04-26 22:51:39.615 | I |  - Parsed 1 Local Extension Settings items
+2026-04-26 22:51:39.617 | I | Preferences:
+2026-04-26 22:51:39.617 | I |  - Reading from F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default\Preferences
+2026-04-26 22:51:39.634 | I |  - Parsed 107 items
+2026-04-26 22:51:39.656 | I | Site Characteristics:
+2026-04-26 22:51:39.656 | I |  - Reading from F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default\Site Characteristics Database
+2026-04-26 22:51:39.657 | D |  - 6 files in Site Characteristics directory: ['000003.log', 'CURRENT', 'LOCK', 'LOG', 'LOG.old', 'MANIFEST-000001']
+2026-04-26 22:51:39.716 | I |  - Parsed 18 items
+2026-04-26 22:51:39.717 | I | Sync Data:
+2026-04-26 22:51:39.717 | I |  - Reading from F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default\Sync Data
+2026-04-26 22:51:39.719 | D |  - 2 files in Sync Data directory: ['LevelDB', 'Nigori.bin']
+2026-04-26 22:51:39.719 | I |  - Reading from F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default\Sync Data\LevelDB
+2026-04-26 22:51:39.809 | D |  - Sync Data proto parsed empty for key b'_mts_schema_descriptor' (value_len=2)
+2026-04-26 22:51:39.810 | I |  - Parsed 94 items
+2026-04-26 22:51:39.829 | I | Transport Security (HSTS):
+2026-04-26 22:51:39.838 | I |  - Reading from F:\Users\Patrick\AppData\Local\Google\Chrome\User Data\Default\Network\TransportSecurity
+2026-04-26 22:51:39.858 | I |  - Parsed 91 items
+2026-04-26 22:51:39.932 | I | Deleting temporary directory C:\Users\sujay\Desktop\dfir-automation\tools\hindsight-temp
+2026-04-26 22:51:39.938 | I | Plugins:
+2026-04-26 22:51:39.938 | I |  Built-in Plugins:
+2026-04-26 22:51:39.940 | D |  - Loading 'chrome_extensions'
+2026-04-26 22:51:39.941 | I |  - Running 'Chrome Extension Names' plugin
+2026-04-26 22:51:39.943 | I |  - Completed; 0 extension URLs parsed
+2026-04-26 22:51:39.943 | D |  - Loading 'generic_timestamps'
+2026-04-26 22:51:39.944 | I |  - Running 'Generic Timestamp Decoder' plugin
+2026-04-26 22:51:39.946 | I |  - Completed; 0 timestamps parsed
+2026-04-26 22:51:39.946 | D |  - Loading 'google_analytics'
+2026-04-26 22:51:39.947 | I |  - Running 'Google Analytics Cookie Parser' plugin
+2026-04-26 22:51:39.949 | I |  - Completed; 0 cookies parsed
+2026-04-26 22:51:39.949 | D |  - Loading 'google_searches'
+2026-04-26 22:51:39.950 | I |  - Running 'Google Searches' plugin
+2026-04-26 22:51:39.953 | I |  - Completed; 10 searches parsed
+2026-04-26 22:51:39.953 | D |  - Loading 'load_balancer_cookies'
+2026-04-26 22:51:39.954 | I |  - Running 'Load Balancer Cookie Decoder' plugin
+2026-04-26 22:51:39.956 | I |  - Completed; 0 cookies parsed
+2026-04-26 22:51:39.956 | D |  - Loading 'quantcast_cookies'
+2026-04-26 22:51:39.957 | I |  - Running 'Quantcast Cookie Parser' plugin
+2026-04-26 22:51:39.958 | I |  - Completed; 0 cookies parsed
+2026-04-26 22:51:39.958 | D |  - Loading 'query_string_parser'
+2026-04-26 22:51:39.959 | I |  - Running 'Query String Parser' plugin
+2026-04-26 22:51:40.051 | I |  - Completed; 971 query strings parsed
+2026-04-26 22:51:40.051 | D |  - Loading 'time_discrepancy_finder'
+2026-04-26 22:51:40.052 | I |  - Running 'Time Discrepancy Finder' plugin
+2026-04-26 22:51:40.054 | I |  - Completed; 0 differences parsed
+2026-04-26 22:51:40.066 | I |  Custom Plugins:
+2026-04-26 22:51:40.067 | I |  Found custom plugin directory C:\Users\sujay\Desktop\dfir-automation\tools\plugins:
+2026-04-26 22:51:40.067 | D |  - Contents of plugin folder: ['RegistryPlugin.7-ZipHistory.dll', 'RegistryPlugin.Adobe.dll', 'RegistryPlugin.Amcache-InventoryApplication.dll', 'RegistryPlugin.Amcache-InventoryApplicationFile.dll', 'RegistryPlugin.Amcache-InventoryApplicationShortcut.dll', 'RegistryPlugin.Amcache-InventoryDeviceContainer.dll', 'RegistryPlugin.Amcache-InventoryDevicePnp.dll', 'RegistryPlugin.Amcache-InventoryDriverBinary.dll', 'RegistryPlugin.Amcache-Mare.dll', 'RegistryPlugin.AppCompatCache.dll', 'RegistryPlugin.AppCompatFlags.dll', 'RegistryPlugin.AppCompatFlags2.dll', 'RegistryPlugin.ApplicationSettingsContainer.dll', 'RegistryPlugin.AppPaths.dll', 'RegistryPlugin.Ares.dll', 'RegistryPlugin.BamDam.dll', 'RegistryPlugin.BluetoothServicesBthPort.dll', 'RegistryPlugin.CIDSizeMRU.dll', 'RegistryPlugin.DeviceClasses.dll', 'RegistryPlugin.DHCPNetworkHint.dll', 'RegistryPlugin.DsrmAdminLogonBehaviour.dll', 'RegistryPlugin.ETW.dll', 'RegistryPlugin.FeatureUsage.dll', 'RegistryPlugin.FileExts.dll', 'RegistryPlugin.FirewallRules.dll', 'RegistryPlugin.FirstFolder.dll', 'RegistryPlugin.IconLayouts.dll', 'RegistryPlugin.JumplistData.dll', 'RegistryPlugin.KnownNetworks.dll', 'RegistryPlugin.LastVisitedMRU.dll', 'RegistryPlugin.LastVisitedPidlMRU.dll', 'RegistryPlugin.MountedDevices.dll', 'RegistryPlugin.NetworkAdapters.dll', 'RegistryPlugin.NetworkSettings.dll', 'RegistryPlugin.NetworkSetup2.dll', 'RegistryPlugin.OfficeMRU.dll', 'RegistryPlugin.OpenSaveMRU.dll', 'RegistryPlugin.OpenSavePidlMRU.dll', 'RegistryPlugin.Products.dll', 'RegistryPlugin.ProfileList.dll', 'RegistryPlugin.RADAR.dll', 'RegistryPlugin.RecentApps.dll', 'RegistryPlugin.RecentDocs.dll', 'RegistryPlugin.RunMRU.dll', 'RegistryPlugin.SAM.dll', 'RegistryPlugin.SAMBuiltin.dll', 'RegistryPlugin.SCSI.dll', 'RegistryPlugin.Services.dll', 'RegistryPlugin.SWD.dll', 'RegistryPlugin.SyscacheObjectTable.dll', 'RegistryPlugin.Taskband.dll', 'RegistryPlugin.TaskCache.dll', 'RegistryPlugin.TaskFlowShellActivities.dll', 'RegistryPlugin.TerminalServerClient.dll', 'RegistryPlugin.TimeZoneInformation.dll', 'RegistryPlugin.TrustedDocuments.dll', 'RegistryPlugin.TypedURLs.dll', 'RegistryPlugin.Uninstall.dll', 'RegistryPlugin.USB.dll', 'RegistryPlugin.USBSTOR.dll', 'RegistryPlugin.UserAssist.dll', 'RegistryPlugin.VolumeInfoCache.dll', 'RegistryPlugin.WindowsApp.dll', 'RegistryPlugin.WindowsPortableDevices.dll', 'RegistryPlugin.WinRAR.dll', 'RegistryPlugin.WordWheelQuery.dll']
+2026-04-26 22:51:40.067 | I |  Found custom plugin directory C:\Users\sujay\AppData\Local\Temp\_MEI187162\plugins:
+2026-04-26 22:51:40.067 | D |  - Contents of plugin folder: ['chrome_extensions.py', 'generic_timestamps.py', 'google_analytics.py', 'google_searches.py', 'load_balancer_cookies.py', 'quantcast_cookies.py', 'query_string_parser.py', 'template.py_', 'time_discrepancy_finder.py', '__init__.py', '__pycache__']
+2026-04-26 22:51:40.067 | D |  - Skipping 'chrome_extensions'; a plugin with that name has run already
+2026-04-26 22:51:40.067 | D |  - Skipping 'generic_timestamps'; a plugin with that name has run already
+2026-04-26 22:51:40.067 | D |  - Skipping 'google_analytics'; a plugin with that name has run already
+2026-04-26 22:51:40.067 | D |  - Skipping 'google_searches'; a plugin with that name has run already
+2026-04-26 22:51:40.067 | D |  - Skipping 'load_balancer_cookies'; a plugin with that name has run already
+2026-04-26 22:51:40.067 | D |  - Skipping 'quantcast_cookies'; a plugin with that name has run already
+2026-04-26 22:51:40.067 | D |  - Skipping 'query_string_parser'; a plugin with that name has run already
+2026-04-26 22:51:40.067 | D |  - Skipping 'time_discrepancy_finder'; a plugin with that name has run already
+2026-04-26 22:51:40.071 | I | Writing output; XLSX format selected
+2026-04-26 22:51:40.458 | I | Finish time: 2026-04-26 22:51:40.458
+
+

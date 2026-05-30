@@ -1,0 +1,11 @@
+name: recyclebin
+display_name: "Recycle Bin ($I metadata)"
+description: >
+  Parses $Recycle.Bin $I metadata files (Vista+ format) to recover the original
+  full path, size, and deletion timestamp of every file sent to the Recycle Bin,
+  grouped by the user SID that deleted it. High value for data-exfiltration and
+  anti-forensic cases (mass deletion) and for proving a specific file was deleted.
+version: "1.0"
+enabled_by_default: true
+artifact_subdirs:
+  - "."

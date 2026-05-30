@@ -1,0 +1,12 @@
+name: shellbags
+display_name: "Shellbags (Folder Browsing History)"
+description: >
+  Parses Windows Shellbags from NTUSER.DAT and UsrClass.dat using SBECmd.exe.
+  Shellbags record folder access — including folders on removable USB drives,
+  network shares, and ZIP archive contents — even after the source is gone.
+  Critical for DLP cases (proves user navigated to specific folders) and
+  USB-exfil cases (preserved drive letter + path even after disconnect).
+version: "1.0"
+enabled_by_default: true
+artifact_subdirs:
+  - .

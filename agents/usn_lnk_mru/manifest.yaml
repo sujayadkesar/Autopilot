@@ -1,0 +1,13 @@
+name: usn_lnk_mru
+display_name: USN Journal / LNK / MRU / Browsers
+description: >
+  Extracts and parses MRU (Most Recently Used) entries via RECmd, USN Journal
+  ($J + $MFT) via MFTECmd, LNK shortcuts via LECmd, and browser history
+  (Chrome, Edge, Firefox) via Hindsight.
+version: "2.1"
+enabled_by_default: true
+artifact_subdirs:
+  - mru
+  - usn_journal
+  - lnk
+  - browsers

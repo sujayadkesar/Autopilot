@@ -1,0 +1,456 @@
+***** Repair of database 'C:\Users\sujay\Desktop\dfir-automation\v7\artifacts\prefetch_amcache_mft\srum\SRUDB.dat' started [ESENT version 10.00.26200.0000, (ESENT[10.0.26200.0] RETAIL RTM MBCS)]
+
+search for 'ERROR:' to find errors
+search for 'WARNING:' to find warnings
+checking database header
+ERROR: database was not shutdown cleanly (Dirty Shutdown)
+database file "C:\Users\sujay\Desktop\dfir-automation\v7\artifacts\prefetch_amcache_mft\srum\SRUDB.dat" is 15204352 bytes
+database file "C:\Users\sujay\Desktop\dfir-automation\v7\artifacts\prefetch_amcache_mft\srum\SRUDB.dat" is 15204352 bytes on disk.
+Creating 64 threads
+checking SystemRoot
+SystemRoot (OE)
+SystemRoot (AE)
+checking system tables
+MSysObjects 
+MSysObjectsShadow 
+MSysObjects Name
+MSysObjects RootObjects
+rebuilding and comparing indexes
+checking logical consistency of system tables
+MSysObjects
+MSysObjectsShadow
+MSysObjids
+MSysLocales:	21952:	checking table "MSysLocales" (7)
+MSysLocales:	21952:	checking data
+MSysObjids:	25812:	checking table "MSysObjids" (6)
+MSysObjids:	25812:	checking data
+MSysLocales:	21952:	integrity-check of table "MSysLocales" (7) finishes with error 0 (0x0) after 0 seconds
+MSysObjids:	25812:	integrity-check of table "MSysObjids" (6) finishes with error 0 (0x0) after 0 seconds
+SruDbIdMapTable:	25812:	checking table "SruDbIdMapTable" (8)
+SruDbCheckpointTable:	21952:	checking table "SruDbCheckpointTable" (10)
+SruDbCheckpointTable:	21952:	checking data
+SruDbCheckpointTable:	21952:	checking index "IdSeqNumberIndex" (11)
+SruDbCheckpointTable:	21952:	rebuilding and comparing indexes
+SruDbIdMapTable:	25812:	checking data
+SruDbCheckpointTable:	21952:	integrity-check of table "SruDbCheckpointTable" (10) finishes with error 0 (0x0) after 0 seconds
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	21952:	checking table "{5C8CF1C7-7257-4F13-B223-970EF5939312}" (15)
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	21952:	checking data
+SruDbIdMapTable:	25812:	checking index "IdTypeIdBlob" (9)
+SruDbIdMapTable:	25812:	rebuilding and comparing indexes
+SruDbIdMapTable:	25812:	integrity-check of table "SruDbIdMapTable" (8) finishes with error 0 (0x0) after 0 seconds
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	25812:	checking table "{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}" (30)
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	25812:	checking data
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	25812:	checking index "AutoIncIdIndex" (33)
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	25812:	checking index "UserIdTimeStamp" (32)
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	25812:	rebuilding and comparing indexes
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	25812:	integrity-check of table "{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}" (30) finishes with error 0 (0x0) after 0 seconds
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	25812:	checking table "{973F5D5C-1D90-4944-BE8E-24B94231A174}" (23)
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	25812:	checking data
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	25812:	checking index "AutoIncIdIndex" (25)
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	25812:	checking index "UserIdTimeStamp" (24)
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	25812:	rebuilding and comparing indexes
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	25812:	integrity-check of table "{973F5D5C-1D90-4944-BE8E-24B94231A174}" (23) finishes with error 0 (0x0) after 0 seconds
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	25812:	checking table "{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}" (29)
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	25812:	checking data
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	25812:	checking index "AppIdIndex" (35)
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	25812:	checking index "AutoIncIdIndex" (34)
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	25812:	checking index "UserIdTimeStamp" (31)
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	25812:	rebuilding and comparing indexes
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	25812:	integrity-check of table "{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}" (29) finishes with error 0 (0x0) after 0 seconds
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	25812:	checking table "{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}" (42)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	25812:	checking data
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	25812:	checking index "AutoIncIdIndex" (44)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	25812:	checking index "UserIdTimeStamp" (43)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	25812:	rebuilding and comparing indexes
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	25812:	integrity-check of table "{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}" (42) finishes with error 0 (0x0) after 0 seconds
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	25812:	checking table "{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}" (36)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	25812:	checking data
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	25812:	checking index "AutoIncIdIndex" (38)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	25812:	checking index "UserIdTimeStamp" (37)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	25812:	rebuilding and comparing indexes
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	21952:	checking index "AutoIncIdIndex" (17)
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	21952:	checking index "UserIdTimeStamp" (16)
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	21952:	rebuilding and comparing indexes
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	25812:	integrity-check of table "{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}" (36) finishes with error 0 (0x0) after 0 seconds
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	25812:	checking table "{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}" (12)
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	25812:	checking data
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	25812:	checking index "AutoIncIdIndex" (14)
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	25812:	checking index "UserIdTimeStamp" (13)
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	25812:	rebuilding and comparing indexes
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	25812:	integrity-check of table "{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}" (12) finishes with error 0 (0x0) after 0 seconds
+{DD6636C4-8929-4683-974E-22C046A43763}:	25812:	checking table "{DD6636C4-8929-4683-974E-22C046A43763}" (39)
+{DD6636C4-8929-4683-974E-22C046A43763}:	25812:	checking data
+{DD6636C4-8929-4683-974E-22C046A43763}:	25812:	checking index "AutoIncIdIndex" (41)
+{DD6636C4-8929-4683-974E-22C046A43763}:	25812:	checking index "UserIdTimeStamp" (40)
+{DD6636C4-8929-4683-974E-22C046A43763}:	25812:	rebuilding and comparing indexes
+{DD6636C4-8929-4683-974E-22C046A43763}:	25812:	integrity-check of table "{DD6636C4-8929-4683-974E-22C046A43763}" (39) finishes with error 0 (0x0) after 0 seconds
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	25812:	checking table "{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}" (18)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	25812:	checking data
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	25812:	checking index "AutoIncIdIndex" (20)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	25812:	checking index "UserIdTimeStamp" (19)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	25812:	rebuilding and comparing indexes
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	25812:	integrity-check of table "{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}" (18) finishes with error 0 (0x0) after 0 seconds
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	25812:	checking table "{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT" (26)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	25812:	checking data
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	25812:	checking index "AutoIncIdIndex" (28)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	25812:	checking index "UserIdTimeStamp" (27)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	25812:	rebuilding and comparing indexes
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	25812:	integrity-check of table "{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT" (26) finishes with error 0 (0x0) after 0 seconds
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	21952:	integrity-check of table "{5C8CF1C7-7257-4F13-B223-970EF5939312}" (15) finishes with error 0 (0x0) after 0 seconds
+WARNING: Database file is too big (expected 3694 pages, file is 3710 pages)
+changing signature of C:\Users\sujay\Desktop\dfir-automation\v7\artifacts\prefetch_amcache_mft\srum\SRUDB.dat
+new DB signature is:
+Create time:Create time:04/27/2026 04:36:22.236 Rand:3872289619 Computer:
+scanning the database from page 1 to page 3710
+changing signature of C:\Users\sujay\Desktop\dfir-automation\v7\artifacts\prefetch_amcache_mft\srum\SRUDB.dat
+new DB signature is:
+Create time:Create time:04/27/2026 04:36:22.574 Rand:748800912 Computer:
+
+Repair completed. Database corruption has been repaired!
+
+
+
+***** Eseutil completed in 1 seconds
+
+***** Repair of database 'C:\Users\sujay\Desktop\dfir-automation\v8\artifacts\prefetch_amcache_mft\srum\SRUDB.dat' started [ESENT version 10.00.26200.0000, (ESENT[10.0.26200.0] RETAIL RTM MBCS)]
+
+search for 'ERROR:' to find errors
+search for 'WARNING:' to find warnings
+checking database header
+ERROR: database was not shutdown cleanly (Dirty Shutdown)
+database file "C:\Users\sujay\Desktop\dfir-automation\v8\artifacts\prefetch_amcache_mft\srum\SRUDB.dat" is 15204352 bytes
+database file "C:\Users\sujay\Desktop\dfir-automation\v8\artifacts\prefetch_amcache_mft\srum\SRUDB.dat" is 15204352 bytes on disk.
+Creating 64 threads
+checking SystemRoot
+SystemRoot (OE)
+SystemRoot (AE)
+checking system tables
+MSysObjects 
+MSysObjectsShadow 
+MSysObjects Name
+MSysObjects RootObjects
+rebuilding and comparing indexes
+checking logical consistency of system tables
+MSysObjects
+MSysObjectsShadow
+MSysObjids
+MSysLocales:	18652:	checking table "MSysLocales" (7)
+MSysObjids:	29656:	checking table "MSysObjids" (6)
+MSysLocales:	18652:	checking data
+MSysObjids:	29656:	checking data
+MSysObjids:	29656:	integrity-check of table "MSysObjids" (6) finishes with error 0 (0x0) after 0 seconds
+MSysLocales:	18652:	integrity-check of table "MSysLocales" (7) finishes with error 0 (0x0) after 0 seconds
+SruDbIdMapTable:	18652:	checking table "SruDbIdMapTable" (8)
+SruDbCheckpointTable:	29656:	checking table "SruDbCheckpointTable" (10)
+SruDbCheckpointTable:	29656:	checking data
+SruDbCheckpointTable:	29656:	checking index "IdSeqNumberIndex" (11)
+SruDbIdMapTable:	18652:	checking data
+SruDbCheckpointTable:	29656:	rebuilding and comparing indexes
+SruDbCheckpointTable:	29656:	integrity-check of table "SruDbCheckpointTable" (10) finishes with error 0 (0x0) after 0 seconds
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	29656:	checking table "{5C8CF1C7-7257-4F13-B223-970EF5939312}" (15)
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	29656:	checking data
+SruDbIdMapTable:	18652:	checking index "IdTypeIdBlob" (9)
+SruDbIdMapTable:	18652:	rebuilding and comparing indexes
+SruDbIdMapTable:	18652:	integrity-check of table "SruDbIdMapTable" (8) finishes with error 0 (0x0) after 0 seconds
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	18652:	checking table "{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}" (30)
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	18652:	checking data
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	18652:	checking index "AutoIncIdIndex" (33)
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	18652:	checking index "UserIdTimeStamp" (32)
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	18652:	rebuilding and comparing indexes
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	18652:	integrity-check of table "{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}" (30) finishes with error 0 (0x0) after 0 seconds
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	18652:	checking table "{973F5D5C-1D90-4944-BE8E-24B94231A174}" (23)
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	18652:	checking data
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	18652:	checking index "AutoIncIdIndex" (25)
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	18652:	checking index "UserIdTimeStamp" (24)
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	18652:	rebuilding and comparing indexes
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	18652:	integrity-check of table "{973F5D5C-1D90-4944-BE8E-24B94231A174}" (23) finishes with error 0 (0x0) after 0 seconds
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	18652:	checking table "{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}" (29)
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	18652:	checking data
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	18652:	checking index "AppIdIndex" (35)
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	18652:	checking index "AutoIncIdIndex" (34)
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	18652:	checking index "UserIdTimeStamp" (31)
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	18652:	rebuilding and comparing indexes
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	18652:	integrity-check of table "{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}" (29) finishes with error 0 (0x0) after 0 seconds
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	18652:	checking table "{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}" (42)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	18652:	checking data
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	18652:	checking index "AutoIncIdIndex" (44)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	18652:	checking index "UserIdTimeStamp" (43)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	18652:	rebuilding and comparing indexes
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	18652:	integrity-check of table "{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}" (42) finishes with error 0 (0x0) after 0 seconds
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	18652:	checking table "{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}" (36)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	18652:	checking data
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	29656:	checking index "AutoIncIdIndex" (17)
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	29656:	checking index "UserIdTimeStamp" (16)
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	29656:	rebuilding and comparing indexes
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	18652:	checking index "AutoIncIdIndex" (38)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	18652:	checking index "UserIdTimeStamp" (37)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	18652:	rebuilding and comparing indexes
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	18652:	integrity-check of table "{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}" (36) finishes with error 0 (0x0) after 1 seconds
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	18652:	checking table "{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}" (12)
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	18652:	checking data
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	18652:	checking index "AutoIncIdIndex" (14)
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	18652:	checking index "UserIdTimeStamp" (13)
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	29656:	integrity-check of table "{5C8CF1C7-7257-4F13-B223-970EF5939312}" (15) finishes with error 0 (0x0) after 1 seconds
+{DD6636C4-8929-4683-974E-22C046A43763}:	29656:	checking table "{DD6636C4-8929-4683-974E-22C046A43763}" (39)
+{DD6636C4-8929-4683-974E-22C046A43763}:	29656:	checking data
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	18652:	rebuilding and comparing indexes
+{DD6636C4-8929-4683-974E-22C046A43763}:	29656:	checking index "AutoIncIdIndex" (41)
+{DD6636C4-8929-4683-974E-22C046A43763}:	29656:	checking index "UserIdTimeStamp" (40)
+{DD6636C4-8929-4683-974E-22C046A43763}:	29656:	rebuilding and comparing indexes
+{DD6636C4-8929-4683-974E-22C046A43763}:	29656:	integrity-check of table "{DD6636C4-8929-4683-974E-22C046A43763}" (39) finishes with error 0 (0x0) after 0 seconds
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	29656:	checking table "{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}" (18)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	29656:	checking data
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	29656:	checking index "AutoIncIdIndex" (20)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	29656:	checking index "UserIdTimeStamp" (19)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	29656:	rebuilding and comparing indexes
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	29656:	integrity-check of table "{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}" (18) finishes with error 0 (0x0) after 0 seconds
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	29656:	checking table "{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT" (26)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	29656:	checking data
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	29656:	checking index "AutoIncIdIndex" (28)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	29656:	checking index "UserIdTimeStamp" (27)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	29656:	rebuilding and comparing indexes
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	29656:	integrity-check of table "{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT" (26) finishes with error 0 (0x0) after 0 seconds
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	18652:	integrity-check of table "{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}" (12) finishes with error 0 (0x0) after 0 seconds
+WARNING: Database file is too big (expected 3694 pages, file is 3710 pages)
+changing signature of C:\Users\sujay\Desktop\dfir-automation\v8\artifacts\prefetch_amcache_mft\srum\SRUDB.dat
+new DB signature is:
+Create time:Create time:04/27/2026 17:18:17.086 Rand:521528867 Computer:
+scanning the database from page 1 to page 3710
+changing signature of C:\Users\sujay\Desktop\dfir-automation\v8\artifacts\prefetch_amcache_mft\srum\SRUDB.dat
+new DB signature is:
+Create time:Create time:04/27/2026 17:18:17.405 Rand:260039957 Computer:
+
+Repair completed. Database corruption has been repaired!
+
+
+
+***** Eseutil completed in 2 seconds
+
+***** Repair of database 'C:\Users\sujay\Desktop\dfir-automation\v9\artifacts\prefetch_amcache_mft\srum\SRUDB.dat' started [ESENT version 10.00.26200.0000, (ESENT[10.0.26200.0] RETAIL RTM MBCS)]
+
+search for 'ERROR:' to find errors
+search for 'WARNING:' to find warnings
+checking database header
+ERROR: database was not shutdown cleanly (Dirty Shutdown)
+database file "C:\Users\sujay\Desktop\dfir-automation\v9\artifacts\prefetch_amcache_mft\srum\SRUDB.dat" is 15204352 bytes
+database file "C:\Users\sujay\Desktop\dfir-automation\v9\artifacts\prefetch_amcache_mft\srum\SRUDB.dat" is 15204352 bytes on disk.
+Creating 64 threads
+checking SystemRoot
+SystemRoot (OE)
+SystemRoot (AE)
+checking system tables
+MSysObjects 
+MSysObjectsShadow 
+MSysObjects Name
+MSysObjects RootObjects
+rebuilding and comparing indexes
+checking logical consistency of system tables
+MSysObjects
+MSysObjectsShadow
+MSysObjids
+MSysLocales:	17040:	checking table "MSysLocales" (7)
+MSysLocales:	17040:	checking data
+MSysObjids:	29496:	checking table "MSysObjids" (6)
+MSysObjids:	29496:	checking data
+MSysLocales:	17040:	integrity-check of table "MSysLocales" (7) finishes with error 0 (0x0) after 0 seconds
+MSysObjids:	29496:	integrity-check of table "MSysObjids" (6) finishes with error 0 (0x0) after 0 seconds
+SruDbIdMapTable:	29496:	checking table "SruDbIdMapTable" (8)
+SruDbCheckpointTable:	17040:	checking table "SruDbCheckpointTable" (10)
+SruDbCheckpointTable:	17040:	checking data
+SruDbCheckpointTable:	17040:	checking index "IdSeqNumberIndex" (11)
+SruDbCheckpointTable:	17040:	rebuilding and comparing indexes
+SruDbIdMapTable:	29496:	checking data
+SruDbCheckpointTable:	17040:	integrity-check of table "SruDbCheckpointTable" (10) finishes with error 0 (0x0) after 0 seconds
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	17040:	checking table "{5C8CF1C7-7257-4F13-B223-970EF5939312}" (15)
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	17040:	checking data
+SruDbIdMapTable:	29496:	checking index "IdTypeIdBlob" (9)
+SruDbIdMapTable:	29496:	rebuilding and comparing indexes
+SruDbIdMapTable:	29496:	integrity-check of table "SruDbIdMapTable" (8) finishes with error 0 (0x0) after 0 seconds
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	29496:	checking table "{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}" (30)
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	29496:	checking data
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	29496:	checking index "AutoIncIdIndex" (33)
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	29496:	checking index "UserIdTimeStamp" (32)
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	29496:	rebuilding and comparing indexes
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	29496:	integrity-check of table "{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}" (30) finishes with error 0 (0x0) after 0 seconds
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	29496:	checking table "{973F5D5C-1D90-4944-BE8E-24B94231A174}" (23)
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	29496:	checking data
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	29496:	checking index "AutoIncIdIndex" (25)
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	29496:	checking index "UserIdTimeStamp" (24)
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	29496:	rebuilding and comparing indexes
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	29496:	integrity-check of table "{973F5D5C-1D90-4944-BE8E-24B94231A174}" (23) finishes with error 0 (0x0) after 0 seconds
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	29496:	checking table "{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}" (29)
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	29496:	checking data
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	29496:	checking index "AppIdIndex" (35)
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	29496:	checking index "AutoIncIdIndex" (34)
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	29496:	checking index "UserIdTimeStamp" (31)
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	29496:	rebuilding and comparing indexes
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	29496:	integrity-check of table "{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}" (29) finishes with error 0 (0x0) after 0 seconds
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	29496:	checking table "{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}" (42)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	29496:	checking data
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	29496:	checking index "AutoIncIdIndex" (44)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	29496:	checking index "UserIdTimeStamp" (43)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	29496:	rebuilding and comparing indexes
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	29496:	integrity-check of table "{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}" (42) finishes with error 0 (0x0) after 0 seconds
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	29496:	checking table "{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}" (36)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	29496:	checking data
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	29496:	checking index "AutoIncIdIndex" (38)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	29496:	checking index "UserIdTimeStamp" (37)
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	17040:	checking index "AutoIncIdIndex" (17)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	29496:	rebuilding and comparing indexes
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	17040:	checking index "UserIdTimeStamp" (16)
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	17040:	rebuilding and comparing indexes
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	29496:	integrity-check of table "{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}" (36) finishes with error 0 (0x0) after 0 seconds
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	29496:	checking table "{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}" (12)
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	29496:	checking data
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	29496:	checking index "AutoIncIdIndex" (14)
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	29496:	checking index "UserIdTimeStamp" (13)
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	29496:	rebuilding and comparing indexes
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	29496:	integrity-check of table "{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}" (12) finishes with error 0 (0x0) after 0 seconds
+{DD6636C4-8929-4683-974E-22C046A43763}:	29496:	checking table "{DD6636C4-8929-4683-974E-22C046A43763}" (39)
+{DD6636C4-8929-4683-974E-22C046A43763}:	29496:	checking data
+{DD6636C4-8929-4683-974E-22C046A43763}:	29496:	checking index "AutoIncIdIndex" (41)
+{DD6636C4-8929-4683-974E-22C046A43763}:	29496:	checking index "UserIdTimeStamp" (40)
+{DD6636C4-8929-4683-974E-22C046A43763}:	29496:	rebuilding and comparing indexes
+{DD6636C4-8929-4683-974E-22C046A43763}:	29496:	integrity-check of table "{DD6636C4-8929-4683-974E-22C046A43763}" (39) finishes with error 0 (0x0) after 0 seconds
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	29496:	checking table "{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}" (18)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	29496:	checking data
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	29496:	checking index "AutoIncIdIndex" (20)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	29496:	checking index "UserIdTimeStamp" (19)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	29496:	rebuilding and comparing indexes
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	29496:	integrity-check of table "{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}" (18) finishes with error 0 (0x0) after 0 seconds
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	29496:	checking table "{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT" (26)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	29496:	checking data
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	29496:	checking index "AutoIncIdIndex" (28)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	29496:	checking index "UserIdTimeStamp" (27)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	29496:	rebuilding and comparing indexes
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	29496:	integrity-check of table "{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT" (26) finishes with error 0 (0x0) after 0 seconds
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	17040:	integrity-check of table "{5C8CF1C7-7257-4F13-B223-970EF5939312}" (15) finishes with error 0 (0x0) after 0 seconds
+WARNING: Database file is too big (expected 3694 pages, file is 3710 pages)
+changing signature of C:\Users\sujay\Desktop\dfir-automation\v9\artifacts\prefetch_amcache_mft\srum\SRUDB.dat
+new DB signature is:
+Create time:Create time:04/28/2026 02:56:06.089 Rand:3049119050 Computer:
+scanning the database from page 1 to page 3710
+changing signature of C:\Users\sujay\Desktop\dfir-automation\v9\artifacts\prefetch_amcache_mft\srum\SRUDB.dat
+new DB signature is:
+Create time:Create time:04/28/2026 02:56:06.445 Rand:585567026 Computer:
+
+Repair completed. Database corruption has been repaired!
+
+
+
+***** Eseutil completed in 0 seconds
+
+***** Repair of database 'C:\Users\sujay\Desktop\dfir-automation\output-test\v10\artifacts\prefetch_amcache_mft\srum\SRUDB.dat' started [ESENT version 10.00.26200.0000, (ESENT[10.0.26200.0] RETAIL RTM MBCS)]
+
+search for 'ERROR:' to find errors
+search for 'WARNING:' to find warnings
+checking database header
+ERROR: database was not shutdown cleanly (Dirty Shutdown)
+database file "C:\Users\sujay\Desktop\dfir-automation\output-test\v10\artifacts\prefetch_amcache_mft\srum\SRUDB.dat" is 15204352 bytes
+database file "C:\Users\sujay\Desktop\dfir-automation\output-test\v10\artifacts\prefetch_amcache_mft\srum\SRUDB.dat" is 15204352 bytes on disk.
+Creating 64 threads
+checking SystemRoot
+SystemRoot (OE)
+SystemRoot (AE)
+checking system tables
+MSysObjects 
+MSysObjectsShadow 
+MSysObjects Name
+MSysObjects RootObjects
+rebuilding and comparing indexes
+checking logical consistency of system tables
+MSysObjects
+MSysObjectsShadow
+MSysObjids
+MSysLocales:	27296:	checking table "MSysLocales" (7)
+MSysLocales:	27296:	checking data
+MSysObjids:	5688:	checking table "MSysObjids" (6)
+MSysObjids:	5688:	checking data
+MSysLocales:	27296:	integrity-check of table "MSysLocales" (7) finishes with error 0 (0x0) after 0 seconds
+MSysObjids:	5688:	integrity-check of table "MSysObjids" (6) finishes with error 0 (0x0) after 0 seconds
+SruDbCheckpointTable:	27296:	checking table "SruDbCheckpointTable" (10)
+SruDbIdMapTable:	5688:	checking table "SruDbIdMapTable" (8)
+SruDbCheckpointTable:	27296:	checking data
+SruDbCheckpointTable:	27296:	checking index "IdSeqNumberIndex" (11)
+SruDbCheckpointTable:	27296:	rebuilding and comparing indexes
+SruDbCheckpointTable:	27296:	integrity-check of table "SruDbCheckpointTable" (10) finishes with error 0 (0x0) after 0 seconds
+SruDbIdMapTable:	5688:	checking data
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	27296:	checking table "{5C8CF1C7-7257-4F13-B223-970EF5939312}" (15)
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	27296:	checking data
+SruDbIdMapTable:	5688:	checking index "IdTypeIdBlob" (9)
+SruDbIdMapTable:	5688:	rebuilding and comparing indexes
+SruDbIdMapTable:	5688:	integrity-check of table "SruDbIdMapTable" (8) finishes with error 0 (0x0) after 0 seconds
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	5688:	checking table "{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}" (30)
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	5688:	checking data
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	5688:	checking index "AutoIncIdIndex" (33)
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	5688:	checking index "UserIdTimeStamp" (32)
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	5688:	rebuilding and comparing indexes
+{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}:	5688:	integrity-check of table "{7ACBBAA3-D029-4BE4-9A7A-0885927F1D8F}" (30) finishes with error 0 (0x0) after 0 seconds
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	5688:	checking table "{973F5D5C-1D90-4944-BE8E-24B94231A174}" (23)
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	5688:	checking data
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	5688:	checking index "AutoIncIdIndex" (25)
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	5688:	checking index "UserIdTimeStamp" (24)
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	5688:	rebuilding and comparing indexes
+{973F5D5C-1D90-4944-BE8E-24B94231A174}:	5688:	integrity-check of table "{973F5D5C-1D90-4944-BE8E-24B94231A174}" (23) finishes with error 0 (0x0) after 0 seconds
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	5688:	checking table "{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}" (29)
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	5688:	checking data
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	5688:	checking index "AppIdIndex" (35)
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	5688:	checking index "AutoIncIdIndex" (34)
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	5688:	checking index "UserIdTimeStamp" (31)
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	5688:	rebuilding and comparing indexes
+{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}:	5688:	integrity-check of table "{B6D82AF1-F780-4E17-8077-6CB9AD8A6FC4}" (29) finishes with error 0 (0x0) after 0 seconds
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	5688:	checking table "{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}" (42)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	5688:	checking data
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	5688:	checking index "AutoIncIdIndex" (44)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	5688:	checking index "UserIdTimeStamp" (43)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	5688:	rebuilding and comparing indexes
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}:	5688:	integrity-check of table "{D10CA2FE-6FCF-4F6D-848E-B2E99266FA86}" (42) finishes with error 0 (0x0) after 0 seconds
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	5688:	checking table "{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}" (36)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	5688:	checking data
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	27296:	checking index "AutoIncIdIndex" (17)
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	27296:	checking index "UserIdTimeStamp" (16)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	5688:	checking index "AutoIncIdIndex" (38)
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	5688:	checking index "UserIdTimeStamp" (37)
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	27296:	rebuilding and comparing indexes
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	5688:	rebuilding and comparing indexes
+{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}:	5688:	integrity-check of table "{D10CA2FE-6FCF-4F6D-848E-B2E99266FA89}" (36) finishes with error 0 (0x0) after 0 seconds
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	5688:	checking table "{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}" (12)
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	5688:	checking data
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	5688:	checking index "AutoIncIdIndex" (14)
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	5688:	checking index "UserIdTimeStamp" (13)
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	5688:	rebuilding and comparing indexes
+{5C8CF1C7-7257-4F13-B223-970EF5939312}:	27296:	integrity-check of table "{5C8CF1C7-7257-4F13-B223-970EF5939312}" (15) finishes with error 0 (0x0) after 0 seconds
+{DD6636C4-8929-4683-974E-22C046A43763}:	27296:	checking table "{DD6636C4-8929-4683-974E-22C046A43763}" (39)
+{DD6636C4-8929-4683-974E-22C046A43763}:	27296:	checking data
+{DD6636C4-8929-4683-974E-22C046A43763}:	27296:	checking index "AutoIncIdIndex" (41)
+{DD6636C4-8929-4683-974E-22C046A43763}:	27296:	checking index "UserIdTimeStamp" (40)
+{DD6636C4-8929-4683-974E-22C046A43763}:	27296:	rebuilding and comparing indexes
+{DD6636C4-8929-4683-974E-22C046A43763}:	27296:	integrity-check of table "{DD6636C4-8929-4683-974E-22C046A43763}" (39) finishes with error 0 (0x0) after 0 seconds
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	27296:	checking table "{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}" (18)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	27296:	checking data
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	27296:	checking index "AutoIncIdIndex" (20)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	27296:	checking index "UserIdTimeStamp" (19)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	27296:	rebuilding and comparing indexes
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}:	27296:	integrity-check of table "{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}" (18) finishes with error 0 (0x0) after 0 seconds
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	27296:	checking table "{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT" (26)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	27296:	checking data
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	27296:	checking index "AutoIncIdIndex" (28)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	27296:	checking index "UserIdTimeStamp" (27)
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	27296:	rebuilding and comparing indexes
+{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT:	27296:	integrity-check of table "{FEE4E14F-02A9-4550-B5CE-5FA2DA202E37}LT" (26) finishes with error 0 (0x0) after 0 seconds
+{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}:	5688:	integrity-check of table "{DA73FB89-2BEA-4DDC-86B8-6E048C6DA477}" (12) finishes with error 0 (0x0) after 0 seconds
+WARNING: Database file is too big (expected 3694 pages, file is 3710 pages)
+changing signature of C:\Users\sujay\Desktop\dfir-automation\output-test\v10\artifacts\prefetch_amcache_mft\srum\SRUDB.dat
+new DB signature is:
+Create time:Create time:04/30/2026 14:34:08.189 Rand:1838641388 Computer:
+scanning the database from page 1 to page 3710
+changing signature of C:\Users\sujay\Desktop\dfir-automation\output-test\v10\artifacts\prefetch_amcache_mft\srum\SRUDB.dat
+new DB signature is:
+Create time:Create time:04/30/2026 14:34:08.443 Rand:1900736703 Computer:
+
+Repair completed. Database corruption has been repaired!
+
+
+
+***** Eseutil completed in 1 seconds
+

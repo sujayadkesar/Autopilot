@@ -1,0 +1,13 @@
+name: prefetch_amcache_mft
+display_name: Prefetch / Amcache / MFT / SRUM
+description: >
+  Extracts and parses $MFT (Master File Table), Amcache.hve (program execution history),
+  Windows Prefetch (.pf files), and SRUDB.dat (System Resource Usage).
+  Uses EZ Tools: MFTECmd, AmcacheParser, PECmd, SrumECmd.
+version: "1.0"
+enabled_by_default: true
+artifact_subdirs:
+  - mft
+  - amcache
+  - prefetch
+  - srum

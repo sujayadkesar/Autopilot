@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>DFIR Forensic Report — {{ customer_name }}</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0e17;--surface:#111827;--surface2:#1a2235;--surface3:#1f2d44;
+  --border:#2a3a52;--text:#e2e8f4;--muted:#7a8fa8;--accent:#4f9cf9;
+  --critical:#ef4444;--high:#f97316;--medium:#eab308;--low:#22c55e;--info:#3b82f6;
+  --crit-bg:#ef44441a;--high-bg:#f973161a;--med-bg:#eab3081a;--low-bg:#22c55e1a;
+  --font:'Segoe UI',system-ui,-apple-system,sans-serif;--mono:'Cascadia Code','Consolas',monospace;
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:14px;line-height:1.65}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+
+/* PRINT */
+@media print{
+  .sidebar,.no-print{display:none!important}
+  .layout{display:block}
+  .main{padding:0;max-width:100%}
+  body{background:#fff;color:#000;font-size:11pt}
+  .hdr{position:relative;background:#1a2235!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  .cover-page{page-break-after:always}
+  details{display:block}
+  details summary::after{display:none}
+  details > div{display:block!important}
+  .finding-card{page-break-inside:avoid}
+}
+
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#080d1a 0%,#111827 60%,#0f1d33 100%);
+     border-bottom:2px solid var(--accent);padding:16px 36px;
+     position:sticky;top:0;z-index:200;display:flex;align-items:center;gap:20px}
+.hdr-logo{color:var(--accent);font-size:1.1em;font-weight:800;letter-spacing:3px;text-transform:uppercase;white-space:nowrap}
+.hdr-logo span{color:#60a5fa}
+.hdr-meta{color:var(--muted);font-size:0.75em;flex:1;text-align:right;line-height:1.8}
+.hdr-meta strong{color:var(--text)}
+
+/* LAYOUT */
+.layout{display:grid;grid-template-columns:220px 1fr;min-height:calc(100vh - 56px)}
+
+/* SIDEBAR */
+.sidebar{background:var(--surface);border-right:1px solid var(--border);
+         padding:20px 0;position:sticky;top:56px;height:calc(100vh - 56px);overflow-y:auto;font-size:0.8em}
+.sidebar-section{color:var(--muted);font-size:0.65em;text-transform:uppercase;letter-spacing:2px;
+                 padding:12px 16px 4px;margin-top:8px}
+.sidebar a{display:block;padding:5px 16px 5px 20px;color:var(--muted);
+           border-left:2px solid transparent;transition:all .12s}
+.sidebar a:hover,.sidebar a.active{color:var(--text);background:var(--surface2);border-left-color:var(--accent)}
+.sidebar .sev-dot{display:inline-block;width:7px;height:7px;border-radius:50%;margin-right:5px;vertical-align:middle}
+
+/* MAIN */
+.main{padding:32px 40px;max-width:1200px}
+
+/* COVER */
+.cover-page{background:linear-gradient(160deg,#060c1a 0%,#0f1d33 50%,#060c1a 100%);
+            border:1px solid var(--border);border-radius:12px;padding:60px;margin-bottom:40px;
+            position:relative;overflow:hidden}
+.cover-page::before{content:'CONFIDENTIAL';position:absolute;bottom:-10px;right:20px;
+                    font-size:120px;font-weight:900;color:#ffffff05;letter-spacing:8px;
+                    pointer-events:none;user-select:none;line-height:1}
+.cover-badge{display:inline-block;background:var(--accent);color:#fff;font-size:0.65em;
+             font-weight:700;letter-spacing:3px;text-transform:uppercase;padding:4px 12px;
+             border-radius:3px;margin-bottom:20px}
+.cover-title{font-size:2.6em;font-weight:800;color:#fff;line-height:1.15;margin-bottom:8px;letter-spacing:1px}
+.cover-subtitle{color:var(--accent);font-size:1.05em;margin-bottom:36px;font-weight:500}
+.cover-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:36px}
+.cover-field{background:#ffffff08;border:1px solid var(--border);border-radius:8px;padding:14px 16px}
+.cover-field-label{color:var(--muted);font-size:0.65em;text-transform:uppercase;letter-spacing:2px;margin-bottom:4px}
+.cover-field-value{color:var(--text);font-weight:600;font-size:0.95em}
+.cover-agents{background:#ffffff05;border:1px solid var(--border);border-radius:8px;
+              padding:14px 16px;margin-top:16px}
+.cover-agents-label{color:var(--muted);font-size:0.65em;text-transform:uppercase;letter-spacing:2px;margin-bottom:8px}
+.agent-pill{display:inline-block;background:var(--surface2);border:1px solid var(--border);
+            border-radius:20px;padding:3px 12px;font-size:0.75em;color:var(--accent);margin:3px}
+
+/* SECTION HEADERS */
+.section-hdr{display:flex;align-items:center;gap:12px;margin-bottom:20px;padding-bottom:10px;
+             border-bottom:1px solid var(--border)}
+.section-hdr h2{color:var(--accent);font-size:1em;text-transform:uppercase;letter-spacing:2px;font-weight:700}
+.section-num{color:var(--muted);font-size:0.75em;font-weight:600;
+             border:1px solid var(--border);border-radius:4px;padding:1px 7px}
+hr.divider{border:none;border-top:1px solid var(--border);margin:40px 0}
+
+/* EXEC SUMMARY */
+.exec-box{background:var(--surface);border:1px solid var(--border);border-radius:10px;
+          border-left:4px solid var(--accent);padding:24px 28px}
+.exec-box p{color:var(--text);line-height:1.8;font-size:0.93em;margin-bottom:12px}
+.exec-box p:last-child{margin-bottom:0}
+
+/* RISK DASHBOARD */
+.risk-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;margin-bottom:28px}
+.risk-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;
+           padding:18px;text-align:center;border-top:3px solid}
+.risk-card.c{border-top-color:var(--critical);background:var(--crit-bg)}
+.risk-card.h{border-top-color:var(--high);background:var(--high-bg)}
+.risk-card.m{border-top-color:var(--medium);background:var(--med-bg)}
+.risk-card.l{border-top-color:var(--low);background:var(--low-bg)}
+.risk-card.i{border-top-color:var(--info)}
+.risk-num{font-size:2.4em;font-weight:800}
+.risk-card.c .risk-num{color:var(--critical)}
+.risk-card.h .risk-num{color:var(--high)}
+.risk-card.m .risk-num{color:var(--medium)}
+.risk-card.l .risk-num{color:var(--low)}
+.risk-card.i .risk-num{color:var(--info)}
+.risk-lbl{font-size:0.68em;color:var(--muted);text-transform:uppercase;letter-spacing:1.5px;margin-top:4px}
+
+/* PER-AGENT GAUGE */
+.agent-gauge-row{display:flex;align-items:center;gap:14px;background:var(--surface);
+                 border:1px solid var(--border);border-radius:8px;padding:12px 18px;margin-bottom:8px}
+.agent-gauge-name{min-width:180px;font-weight:600;font-size:0.88em}
+.gauge-bar{height:8px;border-radius:4px;background:var(--border);flex:1;overflow:hidden;max-width:200px}
+.gauge-fill{height:100%;border-radius:4px;transition:width .3s}
+.gauge-score{font-weight:700;font-size:0.88em;min-width:60px;text-align:right}
+.gauge-counts{color:var(--muted);font-size:0.75em;min-width:120px}
+
+/* FINDING CARDS */
+.finding-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;
+              margin-bottom:16px;overflow:hidden}
+.finding-card-hdr{display:flex;align-items:flex-start;gap:14px;padding:16px 20px;
+                  border-bottom:1px solid var(--border);background:var(--surface2)}
+.finding-card.CRITICAL .finding-card-hdr{border-left:4px solid var(--critical)}
+.finding-card.HIGH .finding-card-hdr{border-left:4px solid var(--high)}
+.finding-card.MEDIUM .finding-card-hdr{border-left:4px solid var(--medium)}
+.finding-card.LOW .finding-card-hdr{border-left:4px solid var(--low)}
+.finding-card.INFO .finding-card-hdr{border-left:4px solid var(--info)}
+.finding-num{color:var(--muted);font-size:0.7em;font-weight:700;padding:2px 7px;
+             border:1px solid var(--border);border-radius:4px;white-space:nowrap;margin-top:2px}
+.finding-title-block{flex:1}
+.finding-title{font-weight:700;font-size:0.97em;margin-bottom:3px}
+.finding-meta{color:var(--muted);font-size:0.75em}
+.finding-body{padding:16px 20px 20px}
+.finding-detail{color:var(--text);font-size:0.88em;line-height:1.7;margin-bottom:12px}
+.finding-ioc{display:inline-flex;align-items:center;gap:6px;background:#0a0e17;
+             border:1px solid var(--border);border-radius:6px;padding:6px 12px;
+             font-family:var(--mono);font-size:0.8em;color:#60a5fa;word-break:break-all}
+.finding-ioc-label{color:var(--muted);font-size:0.7em;text-transform:uppercase;letter-spacing:1px;
+                   font-family:var(--font);min-width:32px}
+
+/* BADGE */
+.badge{display:inline-block;padding:3px 10px;border-radius:4px;font-size:0.72em;
+       font-weight:700;letter-spacing:0.5px;border:1px solid}
+.badge-CRITICAL,.badge-critical{color:var(--critical);border-color:var(--critical);background:var(--crit-bg)}
+.badge-HIGH,.badge-high{color:var(--high);border-color:var(--high);background:var(--high-bg)}
+.badge-MEDIUM,.badge-medium{color:var(--medium);border-color:var(--medium);background:var(--med-bg)}
+.badge-LOW,.badge-low{color:var(--low);border-color:var(--low);background:var(--low-bg)}
+.badge-INFO,.badge-info{color:var(--info);border-color:var(--info)}
+
+/* TABLES */
+.tbl-wrap{overflow-x:auto;border-radius:8px;border:1px solid var(--border)}
+table{width:100%;border-collapse:collapse;font-size:0.82em}
+thead tr{background:var(--surface2)}
+th{padding:9px 14px;text-align:left;font-weight:600;color:var(--muted);
+   border-bottom:1px solid var(--border);white-space:nowrap;font-size:0.8em;text-transform:uppercase;letter-spacing:0.5px}
+td{padding:8px 14px;border-bottom:1px solid var(--border);color:var(--text);word-break:break-word}
+tr:last-child td{border-bottom:none}
+tr:hover td{background:var(--surface2)}
+.ioc-cell{font-family:var(--mono);color:var(--high);font-size:0.85em}
+
+/* TIMELINE */
+.timeline{position:relative;padding-left:24px;border-left:2px solid var(--border)}
+.tl-item{position:relative;padding:0 0 24px 24px}
+.tl-dot{position:absolute;left:-9px;top:4px;width:16px;height:16px;border-radius:50%;border:2px solid var(--bg);box-shadow:0 0 0 2px var(--border)}
+.tl-dot.CRITICAL{background:var(--critical);box-shadow:0 0 0 2px var(--crit-bg)}
+.tl-dot.HIGH{background:var(--high);box-shadow:0 0 0 2px var(--high-bg)}
+.tl-dot.MEDIUM{background:var(--medium)}
+.tl-dot.LOW{background:var(--low)}
+.tl-dot.INFO{background:var(--info)}
+.tl-time{color:var(--muted);font-size:0.72em;font-family:var(--mono);margin-bottom:3px}
+.tl-title{font-weight:600;font-size:0.9em;margin-bottom:3px}
+.tl-detail{color:var(--muted);font-size:0.8em;line-height:1.5}
+
+/* COLLAPSIBLE SECTIONS */
+details.sec{background:var(--surface);border:1px solid var(--border);border-radius:8px;
+            overflow:hidden;margin-bottom:10px}
+details.sec>summary{cursor:pointer;padding:12px 18px;display:flex;align-items:center;
+                    justify-content:space-between;list-style:none;user-select:none;
+                    background:var(--surface2);font-size:0.85em}
+details.sec>summary::-webkit-details-marker{display:none}
+details[open]>summary .arr{transform:rotate(90deg)}
+.sec-title{font-weight:600;color:var(--text)}
+.sec-cnt{background:var(--border);color:var(--muted);border-radius:20px;padding:1px 8px;
+         font-size:0.72em;margin-left:8px}
+.arr{color:var(--muted);transition:transform .2s;font-size:0.75em}
+.sec-body{padding:18px}
+
+/* IOC TABLE */
+.ioc-tag{display:inline-block;background:var(--surface2);border:1px solid var(--border);
+         border-radius:4px;padding:2px 8px;font-family:var(--mono);font-size:0.78em;
+         color:#60a5fa;margin:2px}
+
+/* MISC */
+.no-data{color:var(--muted);font-style:italic;padding:10px;font-size:0.85em}
+.evidence-block{margin-bottom:24px}
+.evidence-title{font-weight:600;color:var(--accent);margin-bottom:8px;font-size:0.82em;text-transform:uppercase;letter-spacing:1px}
+.highlight-cell{background:#f9731633;color:#fcd34d;font-weight:600}
+.embed-body{padding:16px;font-size:0.88em}
+.agent-embed-wrap{background:var(--bg);border-radius:6px;padding:16px;overflow:auto}
+.info-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px;margin-bottom:20px}
+.info-field{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:12px 14px}
+.info-label{color:var(--muted);font-size:0.65em;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:4px}
+.info-value{color:var(--text);font-size:0.88em;font-weight:500;word-break:break-word}
+.note-box{background:var(--surface2);border:1px solid var(--border);border-radius:8px;
+          padding:14px 18px;font-size:0.84em;color:var(--muted)}
+@media(max-width:900px){.layout{grid-template-columns:1fr}.sidebar{position:static;height:auto}.risk-grid{grid-template-columns:repeat(3,1fr)}.cover-grid{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body>
+
+<!-- HEADER -->
+<header class="hdr no-print">
+  <div class="hdr-logo">DFIR <span>&#9632;</span> Forensic Suite</div>
+  <div class="hdr-meta">
+    <strong>{{ customer_name }}</strong> &nbsp;|&nbsp; {{ case_reference }} &nbsp;|&nbsp; {{ investigation_date }} &nbsp;|&nbsp; Generated {{ generated_at }}
+  </div>
+</header>
+
+<div class="layout">
+
+<!-- SIDEBAR -->
+<nav class="sidebar no-print">
+  <div class="sidebar-section">Report</div>
+  <a href="#cover">Cover Page</a>
+  <a href="#executive-summary">Executive Summary</a>
+  <a href="#risk-dashboard">Risk Dashboard</a>
+
+  <div class="sidebar-section">Findings</div>
+  <a href="#findings-all">All Findings ({{ sorted_findings|length }})</a>
+  {% if timeline %}<a href="#timeline">Timeline</a>{% endif %}
+  {% if ioc_map %}<a href="#ioc-rollup">IOC Inventory</a>{% endif %}
+
+  <div class="sidebar-section">By Agent</div>
+  {% for agent in agents_run %}
+  <a href="#agent-{{ agent }}">&#x25B8; {{ agent | replace('_',' ') | title }}</a>
+  {% endfor %}
+
+  {% if evidence_blocks %}
+  <div class="sidebar-section">Evidence</div>
+  <a href="#evidence">Key Evidence</a>
+  {% endif %}
+  <div class="sidebar-section">Appendix</div>
+  <a href="#appendix">Artifact Manifest</a>
+</nav>
+
+<main class="main">
+
+<!-- ═══════════════ COVER ═══════════════ -->
+<section id="cover">
+  <div class="cover-page">
+    <div class="cover-badge">Confidential &mdash; Digital Forensics Report</div>
+    <div class="cover-title">Forensic Investigation<br>Report</div>
+    <div class="cover-subtitle">Digital Forensics &amp; Incident Response (DFIR)</div>
+    <div class="cover-grid">
+      <div class="cover-field">
+        <div class="cover-field-label">Client / Organisation</div>
+        <div class="cover-field-value">{{ customer_name }}</div>
+      </div>
+      <div class="cover-field">
+        <div class="cover-field-label">Case Reference</div>
+        <div class="cover-field-value">{{ case_reference }}</div>
+      </div>
+      <div class="cover-field">
+        <div class="cover-field-label">Investigation Date</div>
+        <div class="cover-field-value">{{ investigation_date }}</div>
+      </div>
+      <div class="cover-field">
+        <div class="cover-field-label">Computer</div>
+        <div class="cover-field-value">{{ system_info.get('ComputerName', 'Unknown') }}</div>
+      </div>
+      <div class="cover-field">
+        <div class="cover-field-label">Operating System</div>
+        <div class="cover-field-value">{{ system_info.get('os_info', {}).get('ProductName', 'Windows') }}</div>
+      </div>
+      <div class="cover-field">
+        <div class="cover-field-label">Report Generated</div>
+        <div class="cover-field-value">{{ generated_at }}</div>
+      </div>
+    </div>
+    <div class="cover-agents">
+      <div class="cover-agents-label">Forensic Modules Executed</div>
+      {% for agent in agents_run %}
+      <span class="agent-pill">{{ agent | replace('_',' ') | title }}</span>
+      {% endfor %}
+      <span class="agent-pill" style="color:var(--muted)">LLM: {{ llm_model }}</span>
+    </div>
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════════ EXECUTIVE SUMMARY ═══════════════ -->
+<section id="executive-summary">
+  <div class="section-hdr">
+    <span class="section-num">01</span>
+    <h2>Executive Summary</h2>
+  </div>
+  <div class="exec-box">
+    {% if exec_summary and exec_summary != 'Executive summary unavailable (LLM not reachable).' %}
+      {% for para in exec_summary.split('\n') %}{% if para.strip() %}<p>{{ para.strip() }}</p>{% endif %}{% endfor %}
+    {% else %}
+      <p style="color:var(--muted)">Executive summary could not be generated. Review findings below for analysis details.</p>
+    {% endif %}
+  </div>
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════════ RISK DASHBOARD ═══════════════ -->
+<section id="risk-dashboard">
+  <div class="section-hdr">
+    <span class="section-num">02</span>
+    <h2>Risk Dashboard</h2>
+  </div>
+
+  <div class="risk-grid">
+    <div class="risk-card c"><div class="risk-num">{{ counts.CRITICAL }}</div><div class="risk-lbl">Critical</div></div>
+    <div class="risk-card h"><div class="risk-num">{{ counts.HIGH }}</div><div class="risk-lbl">High</div></div>
+    <div class="risk-card m"><div class="risk-num">{{ counts.MEDIUM }}</div><div class="risk-lbl">Medium</div></div>
+    <div class="risk-card l"><div class="risk-num">{{ counts.LOW }}</div><div class="risk-lbl">Low</div></div>
+    <div class="risk-card i"><div class="risk-num">{{ counts.INFO }}</div><div class="risk-lbl">Info</div></div>
+  </div>
+
+  <h3 style="color:var(--muted);font-size:0.78em;text-transform:uppercase;letter-spacing:1.5px;margin-bottom:12px">Per-Module Risk Score</h3>
+  {% for agent in agents_run %}
+  {% set score = agent_risk.get(agent, 0) %}
+  {% set ac = agent_counts.get(agent, {}) %}
+  <div class="agent-gauge-row">
+    <div class="agent-gauge-name">{{ agent | replace('_',' ') | title }}</div>
+    <div class="gauge-bar">
+      <div class="gauge-fill" style="width:{{ score }}%;background:{% if score >= 60 %}var(--critical){% elif score >= 30 %}var(--high){% else %}var(--low){% endif %}"></div>
+    </div>
+    <div class="gauge-score" style="color:{% if score >= 60 %}var(--critical){% elif score >= 30 %}var(--high){% else %}var(--low){% endif %}">{{ score }}/100</div>
+    <div class="gauge-counts">
+      <span style="color:var(--critical)">C:{{ ac.get('CRITICAL',0) }}</span>
+      <span style="color:var(--high)"> H:{{ ac.get('HIGH',0) }}</span>
+      <span style="color:var(--medium)"> M:{{ ac.get('MEDIUM',0) }}</span>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+<hr class="divider">
+
+<!-- ═══════════════ ALL FINDINGS ═══════════════ -->
+<section id="findings-all">
+  <div class="section-hdr">
+    <span class="section-num">03</span>
+    <h2>Findings &amp; Evidence</h2>
+  </div>
+
+  {% if sorted_findings %}
+  {% for f in sorted_findings %}
+  <div class="finding-card {{ f.severity }}">
+    <div class="finding-card-hdr">
+      <div class="finding-num">#{{ loop.index }}</div>
+      <span class="badge badge-{{ f.severity }}">{{ f.severity }}</span>
+      <div class="finding-title-block">
+        <div class="finding-title">{{ f.title }}</div>
+        <div class="finding-meta">
+          Module: <strong>{{ f.agent | replace('_',' ') | title }}</strong>
+          &nbsp;&middot;&nbsp; Artifact: <strong>{{ f.artifact }}</strong>
+          {% if f.timestamp %}&nbsp;&middot;&nbsp; {{ f.timestamp }}{% endif %}
+        </div>
+      </div>
+    </div>
+    <div class="finding-body">
+      <div class="finding-detail">{{ f.detail }}</div>
+      {% if f.ioc and f.ioc|length > 1 %}
+      <div class="finding-ioc">
+        <span class="finding-ioc-label">IOC</span>
+        {{ f.ioc }}
+      </div>
+      {% endif %}
+    </div>
+  </div>
+  {% endfor %}
+  {% else %}
+  <div class="no-data">No findings recorded in this investigation.</div>
+  {% endif %}
+</section>
+
+<!-- ═══════════════ TIMELINE ═══════════════ -->
+{% if timeline %}
+<hr class="divider">
+<section id="timeline">
+  <div class="section-hdr">
+    <span class="section-num">04</span>
+    <h2>Chronological Timeline</h2>
+  </div>
+  <div class="timeline">
+    {% for f in timeline %}
+    <div class="tl-item">
+      <div class="tl-dot {{ f.severity }}"></div>
+      <div class="tl-time">{{ f.timestamp }}</div>
+      <div class="tl-title">
+        <span class="badge badge-{{ f.severity }}">{{ f.severity }}</span>
+        &nbsp;{{ f.title }}
+      </div>
+      <div class="tl-detail">{{ f.detail[:180] }}{% if f.detail|length > 180 %}…{% endif %}</div>
+      {% if f.ioc %}<div class="ioc-tag" style="margin-top:4px">{{ f.ioc }}</div>{% endif %}
+    </div>
+    {% endfor %}
+  </div>
+</section>
+{% endif %}
+
+<!-- ═══════════════ IOC ROLL-UP ═══════════════ -->
+{% if ioc_map %}
+<hr class="divider">
+<section id="ioc-rollup">
+  <div class="section-hdr">
+    <span class="section-num">{{ '05' if timeline else '04' }}</span>
+    <h2>Indicators of Compromise (IOC) Inventory</h2>
+  </div>
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr><th>#</th><th>Indicator</th><th>Type</th><th>Source Modules</th></tr>
+      </thead>
+      <tbody>
+      {% for ioc, sources in ioc_map.items() %}
+        <tr>
+          <td style="color:var(--muted);font-size:0.75em">{{ loop.index }}</td>
+          <td class="ioc-cell">{{ ioc }}</td>
+          <td style="color:var(--muted);font-size:0.78em">
+            {% if '.' in ioc and ' ' not in ioc %}Domain/IP
+            {% elif ioc.startswith('\\') or ':' in ioc %}Path
+            {% elif ioc|length in [32,40,64] %}Hash
+            {% else %}Indicator{% endif %}
+          </td>
+          <td style="color:var(--muted);font-size:0.78em">{{ sources | join(', ') }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+</section>
+{% endif %}
+
+<!-- ═══════════════ PER-AGENT SECTIONS ═══════════════ -->
+{% set sec_num = namespace(v=6) %}
+{% for agent in agents_run %}
+<hr class="divider">
+<section id="agent-{{ agent }}">
+  <div class="section-hdr">
+    <span class="section-num">{{ '%02d' % sec_num.v }}</span>
+    <h2>{{ agent | replace('_',' ') | title }} &mdash; Agent Detail</h2>
+  </div>
+  {% set ac = agent_counts.get(agent, {}) %}
+  <div style="display:flex;gap:8px;margin-bottom:16px">
+    <span class="badge badge-CRITICAL">{{ ac.get('CRITICAL',0) }} Critical</span>
+    <span class="badge badge-HIGH">{{ ac.get('HIGH',0) }} High</span>
+    <span class="badge badge-MEDIUM">{{ ac.get('MEDIUM',0) }} Medium</span>
+  </div>
+  <details class="sec" open>
+    <summary>
+      <span class="sec-title">Agent Report Detail<span class="sec-cnt">{{ ac.get('CRITICAL',0) + ac.get('HIGH',0) }} high+critical</span></span>
+      <span class="arr">&#9658;</span>
+    </summary>
+    <div class="sec-body">
+      <div class="agent-embed-wrap">
+        {{ agent_sections.get(agent, '<p class="no-data">No report data available.</p>') | safe }}
+      </div>
+    </div>
+  </details>
+</section>
+{% set sec_num.v = sec_num.v + 1 %}
+{% endfor %}
+
+<!-- ═══════════════ KEY EVIDENCE ═══════════════ -->
+{% if evidence_blocks %}
+<hr class="divider">
+<section id="evidence">
+  <div class="section-hdr">
+    <span class="section-num">{{ '%02d' % sec_num.v }}</span>
+    <h2>Key Evidence Tables</h2>
+  </div>
+  {% for block in evidence_blocks %}
+  <div class="evidence-block">
+    <div class="evidence-title">{{ block.title }}</div>
+    <div class="tbl-wrap">{{ block.html | safe }}</div>
+  </div>
+  {% endfor %}
+</section>
+{% set sec_num.v = sec_num.v + 1 %}
+{% endif %}
+
+<!-- ═══════════════ APPENDIX ═══════════════ -->
+<hr class="divider">
+<section id="appendix">
+  <div class="section-hdr">
+    <span class="section-num">{{ '%02d' % sec_num.v }}</span>
+    <h2>Appendix &mdash; Artifact Manifest</h2>
+  </div>
+  {% if manifest_entries %}
+  <div class="tbl-wrap">
+    <table>
+      <thead>
+        <tr><th>Module</th><th>Artifact File</th><th>Size</th><th>SHA-256 (truncated)</th></tr>
+      </thead>
+      <tbody>
+      {% for entry in manifest_entries %}
+        <tr>
+          <td>{{ entry.agent }}</td>
+          <td style="font-family:var(--mono);font-size:0.78em">{{ entry.path }}</td>
+          <td style="white-space:nowrap">{{ entry.size_bytes | int | string }} B</td>
+          <td style="font-family:var(--mono);font-size:0.72em;color:var(--muted)">{{ entry.sha256[:24] }}…</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  </div>
+  {% else %}
+  <div class="note-box">Artifact manifest not available for this run.</div>
+  {% endif %}
+</section>
+
+</main>
+</div>
+</body>
+</html>

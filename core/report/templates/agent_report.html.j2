@@ -1,0 +1,84 @@
+{% extends "_base.html.j2" %}
+
+{% block title %}{{ display_name }} Report — {{ customer_name }}{% endblock %}
+
+{% block header_title %}{{ display_name }}{% endblock %}
+{% block header_meta %}
+  {{ customer_name }} · {{ case_reference }} · {{ investigation_date }} · Generated {{ generated_at }}
+{% endblock %}
+
+{% block sidebar %}
+  <div class="sidebar-title">Navigation</div>
+  <a href="#overview">Overview</a>
+  <a href="#findings">Findings</a>
+  {% for art in artifacts_by_name.keys() %}
+  <a href="#art-{{ loop.index }}">{{ art }}</a>
+  {% endfor %}
+  <a href="#evidence">Evidence Tables</a>
+{% endblock %}
+
+{% block content %}
+<!-- Overview -->
+<section id="overview">
+  <h2>Overview</h2>
+  <div class="stats">
+    <div class="stat c"><div class="num">{{ counts.CRITICAL }}</div><div class="lbl">Critical</div></div>
+    <div class="stat h"><div class="num">{{ counts.HIGH }}</div><div class="lbl">High</div></div>
+    <div class="stat m"><div class="num">{{ counts.MEDIUM }}</div><div class="lbl">Medium</div></div>
+    <div class="stat l"><div class="num">{{ counts.LOW }}</div><div class="lbl">Low</div></div>
+    <div class="stat i"><div class="num">{{ counts.INFO }}</div><div class="lbl">Info</div></div>
+  </div>
+  <p style="color:var(--muted);margin-bottom:24px">Total findings: <strong style="color:var(--text)">{{ total_findings }}</strong> | Status: <strong style="color:{% if parse_success %}var(--low){% else %}var(--critical){% endif %}">{% if parse_success %}Complete{% else %}Partial{% endif %}</strong></p>
+</section>
+
+<!-- Findings by artifact -->
+<section id="findings">
+  <h2>Findings</h2>
+  {% for art_name, art_findings in artifacts_by_name.items() %}
+  <details class="sec" {% if loop.first %}open{% endif %} id="art-{{ loop.index }}">
+    <summary>
+      <span class="sec-title">{{ art_name }}<span class="sec-cnt">{{ art_findings|length }}</span></span>
+      <span class="arr">▸</span>
+    </summary>
+    <div class="sec-body">
+      <div class="tbl-wrap">
+        <table>
+          <thead><tr><th>Severity</th><th>Title</th><th>Detail</th><th>IOC</th></tr></thead>
+          <tbody>
+          {% for f in art_findings %}
+            <tr>
+              <td><span class="badge badge-{{ f.severity }}">{{ f.severity }}</span></td>
+              <td>{{ f.title }}</td>
+              <td>{{ f.detail }}</td>
+              <td>{% if f.ioc %}<span class="ioc-val">{{ f.ioc }}</span>{% endif %}</td>
+            </tr>
+          {% endfor %}
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </details>
+  {% else %}
+  <div class="no-data" style="padding:24px;background:#161b22;border:1px solid #30363d;border-radius:8px">
+    <p style="color:#8b949e;margin-bottom:12px"><strong style="color:#e6edf3">No analysis-engine findings</strong> for this agent in the current run.</p>
+    <p style="color:#8b949e;font-size:12px;line-height:1.6">
+      This is normal in <strong>automation-only mode</strong> (no AI). The deterministic
+      investigation engine produces its findings into the
+      <a href="formal_investigation_report.html" style="color:#58a6ff">Formal Investigation Report</a>
+      rather than the per-agent reports. The parsed evidence tables for this agent are
+      still available below — use them with the
+      <a href="comprehensive_evidence_report.html" style="color:#58a6ff">Comprehensive Evidence Report</a>
+      for keyword search across everything.
+    </p>
+  </div>
+  {% endfor %}
+</section>
+
+<!-- Evidence Tables -->
+{% if evidence_html %}
+<section id="evidence">
+  <h2>Evidence Tables</h2>
+  {{ evidence_html | safe }}
+</section>
+{% endif %}
+{% endblock %}

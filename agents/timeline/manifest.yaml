@@ -1,0 +1,10 @@
+name: timeline
+display_name: "Windows Timeline (ActivitiesCache)"
+description: >
+  Parses ActivitiesCache.db (Windows 10/11 Timeline) with WxTCmd.exe to recover
+  the per-user activity feed: applications launched and documents opened, with
+  start/end timestamps. Establishes what the user was doing and when.
+version: "1.0"
+enabled_by_default: true
+artifact_subdirs:
+  - "."

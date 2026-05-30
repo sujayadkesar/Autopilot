@@ -1,0 +1,13 @@
+PySide6>=6.7
+PySide6-Addons>=6.7
+python-registry>=1.3
+requests>=2.32
+rich>=13.7
+click>=8.1
+jinja2>=3.1
+pyyaml>=6.0
+pydantic>=2.7
+# Reporting: PDF + evidence-exhibit rasterization (run `playwright install chromium` after install)
+playwright>=1.44
+# Malware analysis: YARA scanning (capa ships as tools/capa.exe, no pip dep)
+yara-python>=4.5

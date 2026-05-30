@@ -1,0 +1,151 @@
+2026-04-26 15:50:10,809 | INFO     | dfir.llm | Ollama: model 'phi3:mini' ready
+2026-04-26 15:50:31,168 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: SYSTEM (30,146,560 bytes)
+2026-04-26 15:50:32,267 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: SOFTWARE (72,876,032 bytes)
+2026-04-26 15:50:32,575 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: SAM (131,072 bytes)
+2026-04-26 15:50:32,594 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: SECURITY (65,536 bytes)
+2026-04-26 15:50:32,622 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: DEFAULT (524,288 bytes)
+2026-04-26 15:50:32,665 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: Amcache.hve (2,097,152 bytes)
+2026-04-26 15:50:32,702 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: NTUSER.DAT (262,144 bytes)
+2026-04-26 15:50:32,740 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: NTUSER.DAT (1,572,864 bytes)
+2026-04-26 15:50:33,343 | INFO     | registry_agent_v7 |     Parsing AMCACHE -> AMCACHE.jsonl (JSONL)...
+2026-04-26 15:50:33,895 | INFO     | registry_agent_v7 |     Done: AMCACHE: 1,141 keys, 21,277 values, 3.45 MB, 0.55s
+2026-04-26 15:50:33,897 | INFO     | registry_agent_v7 |     Parsing DEFAULT -> DEFAULT.jsonl (JSONL)...
+2026-04-26 15:50:33,981 | INFO     | registry_agent_v7 |     Done: DEFAULT: 886 keys, 2,075 values, 0.85 MB, 0.08s
+2026-04-26 15:50:33,984 | INFO     | registry_agent_v7 |     Parsing NTUSER_DEFAULT -> NTUSER_DEFAULT.jsonl (JSONL)...
+2026-04-26 15:50:34,028 | INFO     | registry_agent_v7 |     Done: NTUSER_DEFAULT: 592 keys, 957 values, 0.36 MB, 0.04s
+2026-04-26 15:50:34,030 | INFO     | registry_agent_v7 |     Parsing NTUSER_PATRICK -> NTUSER_PATRICK.jsonl (JSONL)...
+2026-04-26 15:50:34,357 | INFO     | registry_agent_v7 |     Done: NTUSER_PATRICK: 3,649 keys, 6,340 values, 3.1 MB, 0.33s
+2026-04-26 15:50:34,360 | INFO     | registry_agent_v7 |     Parsing SAM -> SAM.jsonl (JSONL)...
+2026-04-26 15:50:34,368 | INFO     | registry_agent_v7 |     Done: SAM: 69 keys, 100 values, 0.14 MB, 0.01s
+2026-04-26 15:50:34,370 | INFO     | registry_agent_v7 |     Parsing SECURITY -> SECURITY.jsonl (JSONL)...
+2026-04-26 15:50:34,378 | INFO     | registry_agent_v7 |     Done: SECURITY: 88 keys, 86 values, 0.05 MB, 0.01s
+2026-04-26 15:50:34,380 | INFO     | registry_agent_v7 |     Parsing SOFTWARE -> SOFTWARE.jsonl (JSONL)...
+2026-04-26 15:50:38,277 | INFO     | registry_agent_v7 |       SOFTWARE: 50,000 keys (12830 keys/sec)
+2026-04-26 15:50:41,375 | INFO     | registry_agent_v7 |       SOFTWARE: 100,000 keys (14295 keys/sec)
+2026-04-26 15:50:44,829 | INFO     | registry_agent_v7 |       SOFTWARE: 150,000 keys (14355 keys/sec)
+2026-04-26 15:50:49,672 | INFO     | registry_agent_v7 |       SOFTWARE: 200,000 keys (13079 keys/sec)
+2026-04-26 15:50:54,539 | INFO     | registry_agent_v7 |       SOFTWARE: 250,000 keys (12402 keys/sec)
+2026-04-26 15:50:55,312 | INFO     | registry_agent_v7 |     Done: SOFTWARE: 256,889 keys, 407,653 values, 154.25 MB, 20.93s
+2026-04-26 15:50:55,314 | INFO     | registry_agent_v7 |     Parsing SYSTEM -> SYSTEM.jsonl (JSONL)...
+2026-04-26 15:50:59,983 | INFO     | registry_agent_v7 |       SYSTEM: 50,000 keys (10709 keys/sec)
+2026-04-26 15:51:04,461 | INFO     | registry_agent_v7 |     Done: SYSTEM: 99,995 keys, 170,166 values, 75.89 MB, 9.15s
+2026-04-26 15:51:04,771 | INFO     | registry_agent_v7 |   ✓ HTML report written: C:\Users\sujay\Desktop\dfir-automation\test_out_fixed\parsed_artifacts\registry\forensic_registry_report.html
+2026-04-26 15:51:04,894 | INFO     | dfir.orchestrator | === Pipeline complete at 2026-04-26T15:51:04 ===
+2026-04-26 15:51:04,896 | INFO     | dfir.orchestrator | Agents: ['registry']
+2026-04-26 15:51:04,897 | INFO     | dfir.orchestrator | Total findings: 0
+2026-04-26 15:51:04,898 | INFO     | dfir.orchestrator | Final report: C:\Users\sujay\Desktop\dfir-automation\test_out_fixed\reports\final_forensic_report.html
+2026-04-26 15:53:45,287 | INFO     | registry_agent_v7 |     Parsing AMCACHE -> AMCACHE.jsonl (JSONL)...
+2026-04-26 15:53:45,814 | INFO     | registry_agent_v7 |     Done: AMCACHE: 1,141 keys, 21,277 values, 3.45 MB, 0.53s
+2026-04-26 15:53:45,817 | INFO     | registry_agent_v7 |     Parsing DEFAULT -> DEFAULT.jsonl (JSONL)...
+2026-04-26 15:53:45,927 | INFO     | registry_agent_v7 |     Done: DEFAULT: 886 keys, 2,075 values, 0.85 MB, 0.11s
+2026-04-26 15:53:45,930 | INFO     | registry_agent_v7 |     Parsing NTUSER_DEFAULT -> NTUSER_DEFAULT.jsonl (JSONL)...
+2026-04-26 15:53:45,983 | INFO     | registry_agent_v7 |     Done: NTUSER_DEFAULT: 592 keys, 957 values, 0.36 MB, 0.05s
+2026-04-26 15:53:45,987 | INFO     | registry_agent_v7 |     Parsing NTUSER_PATRICK -> NTUSER_PATRICK.jsonl (JSONL)...
+2026-04-26 15:53:46,346 | INFO     | registry_agent_v7 |     Done: NTUSER_PATRICK: 3,649 keys, 6,340 values, 3.1 MB, 0.36s
+2026-04-26 15:53:46,348 | INFO     | registry_agent_v7 |     Parsing SAM -> SAM.jsonl (JSONL)...
+2026-04-26 15:53:46,360 | INFO     | registry_agent_v7 |     Done: SAM: 69 keys, 100 values, 0.14 MB, 0.01s
+2026-04-26 15:53:46,362 | INFO     | registry_agent_v7 |     Parsing SECURITY -> SECURITY.jsonl (JSONL)...
+2026-04-26 15:53:46,374 | INFO     | registry_agent_v7 |     Done: SECURITY: 88 keys, 86 values, 0.05 MB, 0.01s
+2026-04-26 15:53:46,378 | INFO     | registry_agent_v7 |     Parsing SOFTWARE -> SOFTWARE.jsonl (JSONL)...
+2026-04-26 15:53:50,429 | INFO     | registry_agent_v7 |       SOFTWARE: 50,000 keys (12344 keys/sec)
+2026-04-26 15:53:53,838 | INFO     | registry_agent_v7 |       SOFTWARE: 100,000 keys (13405 keys/sec)
+2026-04-26 15:53:57,603 | INFO     | registry_agent_v7 |       SOFTWARE: 150,000 keys (13364 keys/sec)
+2026-04-26 15:54:01,868 | INFO     | registry_agent_v7 |       SOFTWARE: 200,000 keys (12912 keys/sec)
+2026-04-26 15:54:06,405 | INFO     | registry_agent_v7 |       SOFTWARE: 250,000 keys (12483 keys/sec)
+2026-04-26 15:54:07,141 | INFO     | registry_agent_v7 |     Done: SOFTWARE: 256,889 keys, 407,653 values, 154.25 MB, 20.76s
+2026-04-26 15:54:07,144 | INFO     | registry_agent_v7 |     Parsing SYSTEM -> SYSTEM.jsonl (JSONL)...
+2026-04-26 15:54:11,382 | INFO     | registry_agent_v7 |       SYSTEM: 50,000 keys (11796 keys/sec)
+2026-04-26 15:54:15,682 | INFO     | registry_agent_v7 |     Done: SYSTEM: 99,995 keys, 170,166 values, 75.89 MB, 8.54s
+2026-04-26 15:54:15,977 | INFO     | registry_agent_v7 |   ✓ HTML report written: C:\Users\sujay\Desktop\dfir-automation\test_out_fixed\parsed_artifacts\registry\forensic_registry_report.html
+2026-04-26 15:54:16,060 | INFO     | dfir.orchestrator | === Pipeline complete at 2026-04-26T15:54:16 ===
+2026-04-26 15:54:16,062 | INFO     | dfir.orchestrator | Agents: ['registry']
+2026-04-26 15:54:16,063 | INFO     | dfir.orchestrator | Total findings: 0
+2026-04-26 15:54:16,064 | INFO     | dfir.orchestrator | Final report: C:\Users\sujay\Desktop\dfir-automation\test_out_fixed\reports\final_forensic_report.html
+2026-04-26 15:54:58,803 | INFO     | dfir.llm | Ollama: model 'phi3:mini' ready
+2026-04-26 15:54:59,120 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: SYSTEM (30,146,560 bytes)
+2026-04-26 15:54:59,724 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: SOFTWARE (72,876,032 bytes)
+2026-04-26 15:54:59,919 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: SAM (131,072 bytes)
+2026-04-26 15:54:59,926 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: SECURITY (65,536 bytes)
+2026-04-26 15:54:59,935 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: DEFAULT (524,288 bytes)
+2026-04-26 15:54:59,967 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: Amcache.hve (2,097,152 bytes)
+2026-04-26 15:54:59,976 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: NTUSER.DAT (262,144 bytes)
+2026-04-26 15:55:00,001 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: NTUSER.DAT (1,572,864 bytes)
+2026-04-26 15:55:00,520 | INFO     | registry_agent_v7 |     Parsing AMCACHE -> AMCACHE.jsonl (JSONL)...
+2026-04-26 15:55:00,961 | INFO     | registry_agent_v7 |     Done: AMCACHE: 1,141 keys, 21,277 values, 3.45 MB, 0.44s
+2026-04-26 15:55:00,964 | INFO     | registry_agent_v7 |     Parsing DEFAULT -> DEFAULT.jsonl (JSONL)...
+2026-04-26 15:55:01,045 | INFO     | registry_agent_v7 |     Done: DEFAULT: 886 keys, 2,075 values, 0.85 MB, 0.08s
+2026-04-26 15:55:01,048 | INFO     | registry_agent_v7 |     Parsing NTUSER_DEFAULT -> NTUSER_DEFAULT.jsonl (JSONL)...
+2026-04-26 15:55:01,090 | INFO     | registry_agent_v7 |     Done: NTUSER_DEFAULT: 592 keys, 957 values, 0.36 MB, 0.04s
+2026-04-26 15:55:01,091 | INFO     | registry_agent_v7 |     Parsing NTUSER_PATRICK -> NTUSER_PATRICK.jsonl (JSONL)...
+2026-04-26 15:55:01,377 | INFO     | registry_agent_v7 |     Done: NTUSER_PATRICK: 3,649 keys, 6,340 values, 3.09 MB, 0.29s
+2026-04-26 15:55:01,379 | INFO     | registry_agent_v7 |     Parsing SAM -> SAM.jsonl (JSONL)...
+2026-04-26 15:55:01,387 | INFO     | registry_agent_v7 |     Done: SAM: 69 keys, 100 values, 0.14 MB, 0.01s
+2026-04-26 15:55:01,389 | INFO     | registry_agent_v7 |     Parsing SECURITY -> SECURITY.jsonl (JSONL)...
+2026-04-26 15:55:01,397 | INFO     | registry_agent_v7 |     Done: SECURITY: 88 keys, 86 values, 0.05 MB, 0.01s
+2026-04-26 15:55:01,399 | INFO     | registry_agent_v7 |     Parsing SOFTWARE -> SOFTWARE.jsonl (JSONL)...
+2026-04-26 15:55:05,128 | INFO     | registry_agent_v7 |       SOFTWARE: 50,000 keys (13408 keys/sec)
+2026-04-26 15:55:08,250 | INFO     | registry_agent_v7 |       SOFTWARE: 100,000 keys (14595 keys/sec)
+2026-04-26 15:55:11,766 | INFO     | registry_agent_v7 |       SOFTWARE: 150,000 keys (14469 keys/sec)
+2026-04-26 15:55:16,140 | INFO     | registry_agent_v7 |       SOFTWARE: 200,000 keys (13567 keys/sec)
+2026-04-26 15:55:20,589 | INFO     | registry_agent_v7 |       SOFTWARE: 250,000 keys (13028 keys/sec)
+2026-04-26 15:55:21,330 | INFO     | registry_agent_v7 |     Done: SOFTWARE: 256,889 keys, 407,653 values, 153.76 MB, 19.93s
+2026-04-26 15:55:21,333 | INFO     | registry_agent_v7 |     Parsing SYSTEM -> SYSTEM.jsonl (JSONL)...
+2026-04-26 15:55:25,618 | INFO     | registry_agent_v7 |       SYSTEM: 50,000 keys (11667 keys/sec)
+2026-04-26 15:55:29,893 | INFO     | registry_agent_v7 |     Done: SYSTEM: 99,995 keys, 170,166 values, 75.7 MB, 8.56s
+2026-04-26 16:01:56,798 | WARNING  | dfir.llm | Ollama ask failed: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=180)
+2026-04-26 16:04:59,038 | WARNING  | dfir.llm | Ollama ask failed: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=180)
+2026-04-26 16:08:01,364 | WARNING  | dfir.llm | Ollama ask failed: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=180)
+2026-04-26 16:11:03,685 | WARNING  | dfir.llm | Ollama ask failed: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=180)
+2026-04-26 16:14:05,895 | WARNING  | dfir.llm | Ollama ask failed: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=180)
+2026-04-26 16:17:08,082 | WARNING  | dfir.llm | Ollama ask failed: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=180)
+2026-04-26 16:17:37,328 | INFO     | dfir.llm | Ollama: model 'phi3:mini' ready
+2026-04-26 16:17:39,208 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: SYSTEM (30,146,560 bytes)
+2026-04-26 16:17:42,054 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: SOFTWARE (72,876,032 bytes)
+2026-04-26 16:17:44,639 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: SAM (131,072 bytes)
+2026-04-26 16:17:44,684 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: SECURITY (65,536 bytes)
+2026-04-26 16:17:44,811 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: DEFAULT (524,288 bytes)
+2026-04-26 16:17:44,983 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: Amcache.hve (2,097,152 bytes)
+2026-04-26 16:17:45,131 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: NTUSER.DAT (262,144 bytes)
+2026-04-26 16:17:45,276 | INFO     | registry_agent_v7 |     âœ“ Win32 copy: NTUSER.DAT (1,572,864 bytes)
+2026-04-26 16:17:47,250 | INFO     | registry_agent_v7 |     Parsing AMCACHE -> AMCACHE.jsonl (JSONL)...
+2026-04-26 16:17:48,694 | INFO     | registry_agent_v7 |     Done: AMCACHE: 1,141 keys, 21,277 values, 3.45 MB, 1.44s
+2026-04-26 16:17:48,700 | INFO     | registry_agent_v7 |     Parsing DEFAULT -> DEFAULT.jsonl (JSONL)...
+2026-04-26 16:17:49,004 | INFO     | registry_agent_v7 |     Done: DEFAULT: 886 keys, 2,075 values, 0.85 MB, 0.3s
+2026-04-26 16:17:49,012 | INFO     | registry_agent_v7 |     Parsing NTUSER_DEFAULT -> NTUSER_DEFAULT.jsonl (JSONL)...
+2026-04-26 16:17:49,195 | INFO     | registry_agent_v7 |     Done: NTUSER_DEFAULT: 592 keys, 957 values, 0.36 MB, 0.18s
+2026-04-26 16:17:49,200 | INFO     | registry_agent_v7 |     Parsing NTUSER_PATRICK -> NTUSER_PATRICK.jsonl (JSONL)...
+2026-04-26 16:17:50,098 | INFO     | registry_agent_v7 |     Done: NTUSER_PATRICK: 3,649 keys, 6,340 values, 3.09 MB, 0.9s
+2026-04-26 16:17:50,103 | INFO     | registry_agent_v7 |     Parsing SAM -> SAM.jsonl (JSONL)...
+2026-04-26 16:17:50,126 | INFO     | registry_agent_v7 |     Done: SAM: 69 keys, 100 values, 0.14 MB, 0.02s
+2026-04-26 16:17:50,130 | INFO     | registry_agent_v7 |     Parsing SECURITY -> SECURITY.jsonl (JSONL)...
+2026-04-26 16:17:50,149 | INFO     | registry_agent_v7 |     Done: SECURITY: 88 keys, 86 values, 0.05 MB, 0.02s
+2026-04-26 16:17:50,155 | INFO     | registry_agent_v7 |     Parsing SOFTWARE -> SOFTWARE.jsonl (JSONL)...
+2026-04-26 16:18:00,994 | INFO     | registry_agent_v7 |       SOFTWARE: 50,000 keys (4613 keys/sec)
+2026-04-26 16:18:08,280 | INFO     | registry_agent_v7 |       SOFTWARE: 100,000 keys (5517 keys/sec)
+2026-04-26 16:18:16,857 | INFO     | registry_agent_v7 |       SOFTWARE: 150,000 keys (5617 keys/sec)
+2026-04-26 16:18:27,631 | INFO     | registry_agent_v7 |       SOFTWARE: 200,000 keys (5337 keys/sec)
+2026-04-26 16:18:39,499 | INFO     | registry_agent_v7 |       SOFTWARE: 250,000 keys (5066 keys/sec)
+2026-04-26 16:18:41,539 | INFO     | registry_agent_v7 |     Done: SOFTWARE: 256,889 keys, 407,653 values, 154.01 MB, 51.38s
+2026-04-26 16:18:41,547 | INFO     | registry_agent_v7 |     Parsing SYSTEM -> SYSTEM.jsonl (JSONL)...
+2026-04-26 16:18:52,129 | INFO     | registry_agent_v7 |       SYSTEM: 50,000 keys (4725 keys/sec)
+2026-04-26 16:19:02,287 | INFO     | registry_agent_v7 |     Done: SYSTEM: 99,995 keys, 170,166 values, 75.79 MB, 20.74s
+2026-04-26 16:20:10,464 | WARNING  | dfir.llm | Ollama ask failed: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=180)
+2026-04-26 16:20:10,632 | INFO     | dfir.orchestrator | Analysis complete: 3 findings
+2026-04-26 16:20:10,764 | INFO     | registry_agent_v7 |   ✓ HTML report written: C:\Users\sujay\Desktop\dfir-automation\test_out_llm\parsed_artifacts\registry\forensic_registry_report.html
+2026-04-26 16:37:08,222 | WARNING  | dfir.llm | Ollama ask failed: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=180)
+2026-04-26 16:37:08,365 | WARNING  | dfir.llm | Ollama ask failed: HTTPConnectionPool(host='localhost', port=11434): Read timed out. (read timeout=300)
+2026-04-26 16:37:10,130 | INFO     | dfir.orchestrator | === Pipeline complete at 2026-04-26T16:37:10 ===
+2026-04-26 16:37:10,144 | INFO     | dfir.orchestrator | Agents: ['registry']
+2026-04-26 16:37:10,148 | INFO     | dfir.orchestrator | Total findings: 3
+2026-04-26 16:37:10,161 | INFO     | dfir.orchestrator | Final report: C:\Users\sujay\Desktop\dfir-automation\test_out_llm\reports\final_forensic_report.html
+2026-04-26 16:57:36,795 | INFO     | dfir.orchestrator | Analysis complete: 14 findings
+2026-04-26 16:57:36,874 | INFO     | registry_agent_v7 |   ✓ HTML report written: C:\Users\sujay\Desktop\dfir-automation\test_out_llm2\parsed_artifacts\registry\forensic_registry_report.html
+2026-04-26 17:01:34,961 | INFO     | dfir.orchestrator | === Pipeline complete at 2026-04-26T17:01:34 ===
+2026-04-26 17:01:34,981 | INFO     | dfir.orchestrator | Agents: ['registry']
+2026-04-26 17:01:34,982 | INFO     | dfir.orchestrator | Total findings: 14
+2026-04-26 17:01:34,987 | INFO     | dfir.orchestrator | Final report: C:\Users\sujay\Desktop\dfir-automation\test_out_llm2\reports\final_forensic_report.html
+2026-04-30 19:53:41,067 | INFO     | dfir.llm | Ollama: model 'phi3:mini' ready
+2026-04-30 19:59:11,146 | INFO     | dfir.llm | Ollama: model 'phi3:mini' ready
+2026-04-30 20:00:19,524 | INFO     | dfir.llm | Ollama: model 'phi3:mini' ready
+2026-05-30 19:45:13,876 | INFO     | dfir.llm | Ollama: model 'phi3:mini' ready
+2026-05-30 20:45:03,193 | INFO     | dfir.llm | Ollama: model 'phi3:mini' ready

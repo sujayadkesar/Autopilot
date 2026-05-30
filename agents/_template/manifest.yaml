@@ -1,0 +1,8 @@
+name: my_agent
+display_name: My Forensic Agent
+description: >
+  One-line description of what this agent extracts and analyses.
+version: "1.0"
+enabled_by_default: false
+artifact_subdirs:
+  - my_artifact_type

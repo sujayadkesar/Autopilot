@@ -1,0 +1,15 @@
+name: event_logs
+display_name: "Windows Event Logs"
+description: >
+  Extracts and analyses Windows Security, System, PowerShell, and Sysmon event logs.
+  Key events: logon/logoff, privilege escalation, service installs, scheduled tasks,
+  process creation, PowerShell script blocks, lateral movement indicators.
+version: "1.0"
+enabled_by_default: true
+artifact_subdirs:
+  - security
+  - system
+  - application
+  - powershell
+  - sysmon
+  - scheduled_tasks

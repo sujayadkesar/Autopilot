@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>{% block title %}DFIR Report{% endblock %}</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0d1117;--surface:#161b22;--surface2:#1f2937;--surface3:#252b3b;
+  --border:#30363d;--text:#e6edf3;--muted:#8b949e;--accent:#58a6ff;
+  --critical:#ff4444;--high:#ff8800;--medium:#ffcc00;--low:#33cc66;--info:#4488ff;
+  --font:'Segoe UI',system-ui,-apple-system,sans-serif;
+}
+body{font-family:var(--font);background:var(--bg);color:var(--text);font-size:14px;line-height:1.6}
+a{color:var(--accent);text-decoration:none}
+a:hover{text-decoration:underline}
+/* HEADER */
+.hdr{background:linear-gradient(135deg,#0d1b2a,#1a1f35);border-bottom:2px solid var(--accent);padding:24px 40px;position:sticky;top:0;z-index:100}
+.hdr h1{color:var(--accent);font-size:1.5em;letter-spacing:2px;text-transform:uppercase}
+.hdr .meta{color:var(--muted);font-size:0.8em;margin-top:4px}
+/* LAYOUT */
+.layout{display:grid;grid-template-columns:240px 1fr;min-height:calc(100vh - 76px)}
+/* SIDEBAR */
+.sidebar{background:var(--surface);border-right:1px solid var(--border);padding:16px 0;position:sticky;top:76px;height:calc(100vh - 76px);overflow-y:auto}
+.sidebar-title{color:var(--muted);font-size:0.68em;text-transform:uppercase;letter-spacing:2px;padding:6px 16px 3px}
+.sidebar a{display:block;padding:6px 16px;color:var(--muted);font-size:0.8em;border-left:3px solid transparent;transition:all .15s}
+.sidebar a:hover{color:var(--text);background:var(--surface2);border-left-color:var(--accent)}
+/* MAIN */
+.main{padding:28px 36px;max-width:1280px}
+/* STAT CARDS */
+.stats{display:grid;grid-template-columns:repeat(5,1fr);gap:14px;margin-bottom:24px}
+.stat{background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:16px;text-align:center;border-top:3px solid}
+.stat.c{border-color:var(--critical)} .stat.h{border-color:var(--high)}
+.stat.m{border-color:var(--medium)} .stat.l{border-color:var(--low)} .stat.i{border-color:var(--info)}
+.stat .num{font-size:2em;font-weight:700}
+.stat .lbl{font-size:0.72em;color:var(--muted);text-transform:uppercase;margin-top:3px}
+.stat.c .num{color:var(--critical)} .stat.h .num{color:var(--high)}
+.stat.m .num{color:var(--medium)} .stat.l .num{color:var(--low)} .stat.i .num{color:var(--info)}
+/* SECTIONS */
+details.sec{background:var(--surface);border:1px solid var(--border);border-radius:8px;overflow:hidden;margin-bottom:12px}
+details.sec>summary{cursor:pointer;padding:12px 18px;display:flex;align-items:center;justify-content:space-between;list-style:none;user-select:none;background:var(--surface2)}
+details.sec>summary::-webkit-details-marker{display:none}
+details[open]>summary .arr{transform:rotate(90deg)}
+.sec-title{font-size:0.86em;text-transform:uppercase;letter-spacing:1px;color:var(--accent);font-weight:600}
+.sec-cnt{background:var(--border);color:var(--muted);border-radius:20px;padding:1px 8px;font-size:0.72em;margin-left:6px}
+.arr{color:var(--muted);transition:transform .2s;font-size:0.8em}
+.sec-body{padding:18px}
+/* TABLES */
+.tbl-wrap{overflow-x:auto}
+table{width:100%;border-collapse:collapse;font-size:0.83em}
+thead tr{background:var(--surface2)}
+th{padding:8px 12px;text-align:left;font-weight:600;color:var(--muted);border-bottom:1px solid var(--border);white-space:nowrap}
+td{padding:7px 12px;border-bottom:1px solid var(--border);color:var(--text);word-break:break-word}
+tr:hover td{background:var(--surface2)}
+/* BADGE */
+.badge{display:inline-block;padding:2px 8px;border-radius:4px;border:1px solid;font-size:0.75em;font-weight:600}
+.badge-CRITICAL{color:var(--critical);border-color:var(--critical)}
+.badge-HIGH{color:var(--high);border-color:var(--high)}
+.badge-MEDIUM{color:var(--medium);border-color:var(--medium)}
+.badge-LOW{color:var(--low);border-color:var(--low)}
+.badge-INFO{color:var(--info);border-color:var(--info)}
+/* LLM BOX */
+.llm-box{background:var(--surface2);border-left:3px solid var(--accent);padding:12px 16px;border-radius:0 6px 6px 0;margin-bottom:14px;font-size:0.88em}
+.risk-score{font-weight:700;margin-right:8px}
+/* EVIDENCE */
+.evidence-table-wrap{overflow-x:auto;margin:10px 0}
+.evidence-title{font-weight:600;color:var(--accent);margin-bottom:6px;font-size:0.85em;text-transform:uppercase;letter-spacing:1px}
+.highlight-cell{background:#ff880033;color:#ffcc00;font-weight:600}
+.evidence-block{margin-bottom:24px}
+/* MISC */
+.no-data{color:var(--muted);font-style:italic;padding:8px}
+.note{color:var(--muted);font-size:0.78em;padding:4px 0}
+.err{color:var(--critical)}
+.ioc-val{font-family:monospace;color:var(--high);font-size:0.9em}
+.cover-page{text-align:center;padding:60px 40px;background:linear-gradient(180deg,#0d1b2a,#0d1117)}
+.cover-title{font-size:2.4em;color:var(--accent);letter-spacing:4px;text-transform:uppercase;margin-bottom:8px}
+.cover-sub{font-size:1.1em;color:var(--muted);margin-bottom:40px}
+.cover-meta{display:inline-grid;grid-template-columns:auto auto;gap:10px 32px;text-align:left;background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:24px 36px}
+.cover-key{color:var(--muted);font-size:0.8em;text-transform:uppercase;letter-spacing:1px}
+.cover-val{color:var(--text);font-weight:500}
+.toc-list{list-style:none;display:grid;gap:6px}
+.toc-list li a{display:flex;align-items:center;gap:8px;padding:8px 14px;background:var(--surface2);border-radius:6px;transition:background .15s}
+.toc-list li a:hover{background:var(--surface3)}
+.toc-num{color:var(--muted);font-size:0.75em;min-width:20px}
+h2{color:var(--accent);font-size:1.1em;text-transform:uppercase;letter-spacing:2px;margin-bottom:16px;padding-bottom:6px;border-bottom:1px solid var(--border)}
+h3{color:var(--text);font-size:0.95em;margin-bottom:10px}
+.risk-gauge{display:inline-flex;align-items:center;gap:10px;background:var(--surface2);padding:8px 16px;border-radius:20px;font-weight:600}
+.agent-gauge-bar{height:6px;border-radius:3px;background:var(--border);width:120px;overflow:hidden}
+.agent-gauge-fill{height:100%;border-radius:3px}
+@media (max-width:900px){.layout{grid-template-columns:1fr}.sidebar{position:static;height:auto}}
+</style>
+{% block extra_style %}{% endblock %}
+</head>
+<body>
+<header class="hdr">
+  <h1>{% block header_title %}DFIR Forensic Report{% endblock %}</h1>
+  <div class="meta">{% block header_meta %}{% endblock %}</div>
+</header>
+<div class="layout">
+  <nav class="sidebar">
+    {% block sidebar %}{% endblock %}
+  </nav>
+  <main class="main">
+    {% block content %}{% endblock %}
+  </main>
+</div>
+</body>
+</html>

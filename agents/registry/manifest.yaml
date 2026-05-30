@@ -1,0 +1,11 @@
+name: registry
+display_name: Windows Registry
+description: >
+  Extracts and analyses all key Windows Registry hives (SYSTEM, SOFTWARE, SAM,
+  SECURITY, NTUSER.DAT, USRCLASS.dat, Amcache.hve). Produces full root-to-leaf
+  JSONL exports plus triage artifacts covering USB devices, persistence,
+  services, network, user activity, execution evidence, and more.
+version: "9.0"
+enabled_by_default: true
+artifact_subdirs:
+  - raw_registry
